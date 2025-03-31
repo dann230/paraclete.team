@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paraclete Tech Outsourcing</title>
+<link rel="icon" href="img/favicon.png">
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+primary: '#4169E1',
+secondary: '#87CEEB'
+},
+borderRadius: {
+'none': '0px',
+'sm': '4px',
+DEFAULT: '8px',
+'md': '12px',
+'lg': '16px',
+'xl': '20px',
+'2xl': '24px',
+'3xl': '32px',
+'full': '9999px',
+'button': '8px'
+}
+}
+}
+}
+</script>
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+.loading-screen {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: white;
+display: flex;
+justify-content: center;
+align-items: center;
+z-index: 9999;
+transition: opacity 0.5s;
+}
+.loading-animation {
+width: 50px;
+height: 50px;
+border: 3px solid #f3f3f3;
+border-top: 3px solid #4169E1;
+border-radius: 50%;
+animation: spin 1s linear infinite;
+}
+@keyframes spin {
+0% { transform: rotate(0deg); }
+100% { transform: rotate(360deg); }
+}
+.nav-link {
+position: relative;
+}
+.nav-link::after {
+content: '';
+position: absolute;
+width: 0;
+height: 2px;
+bottom: -2px;
+left: 0;
+background-color: #4169E1;
+transition: width 0.3s;
+}
+.nav-link:hover::after {
+width: 100%;
+}
+.mobile-menu {
+transform: translateX(100%);
+transition: transform 0.3s ease-in-out;
+}
+.mobile-menu.active {
+transform: translateX(0);
+}
+</style>
+</head>
+<body class="bg-white">
+<div class="loading-screen" id="loadingScreen">
+<div class="loading-animation"></div>
+</div>
+<!-- Navigation -->
+<nav class="fixed top-0 left-0 right-0 bg-white shadow-sm z-50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-16">
+<div class="flex items-center">
+<a href="Paraclete.html" class="flex items-center">
+<img src="img/favicon.png" alt="Paraclete Logo" class="h-8 w-auto">
+</a>
+</div>
+<div class="hidden md:flex items-center space-x-8">
+<a href="Paraclete.html" class="nav-link text-gray-700 hover:text-primary">Home</a>
+<a href="services.html" class="nav-link text-gray-700 hover:text-primary">Services</a>
+<a href="Goals.html" class="nav-link text-gray-700 hover:text-primary">Goals</a>
+<a href="about-us.html" class="nav-link text-gray-700 hover:text-primary">About Us</a>
+<a href="fields.html" class="nav-link text-gray-700 hover:text-primary">Fields & Stacks</a>
+<a href="team.html" class="nav-link text-gray-700 hover:text-primary">Team Profiles</a>
+</div>
+<div class="md:hidden flex items-center">
+<button id="menuButton" class="text-gray-700 hover:text-primary">
+<i class="ri-menu-2-line ri-2x"></i>
+</button>
+</div>
+</div>
+</div>
+<!-- Mobile menu -->
+<div id="mobileMenu" class="mobile-menu fixed top-16 right-0 bottom-0 w-64 bg-white shadow-lg md:hidden">
+<div class="px-2 pt-2 pb-3 space-y-1">
+<a href="Paraclete.html" class="block px-3 py-2 text-gray-700 hover:bg-primary hover:text-white rounded-md">Home</a>
+<a href="services.html" class="block px-3 py-2 text-gray-700 hover:bg-primary hover:text-white rounded-md">Services</a>
+<a href="Goals.html" class="block px-3 py-2 text-gray-700 hover:bg-primary hover:text-white rounded-md">Goals</a>
+<a href="about-us.html" class="block px-3 py-2 text-gray-700 hover:bg-primary hover:text-white rounded-md">About Us</a>
+<a href="fields.html" class="block px-3 py-2 text-gray-700 hover:bg-primary hover:text-white rounded-md">Fields & Stacks</a>
+<a href="team.html" class="block px-3 py-2 text-gray-700 hover:bg-primary hover:text-white rounded-md">Team Profiles</a>
+</div>
+</div>
+</nav>
+<!-- Hero Section -->
+<section class="pt-16 relative bg-gradient-to-r from-primary/5 to-primary/10 min-h-screen flex items-center">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+<div>
+<h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+Empowering Your Business Through Digital Excellence
+</h1>
+<p class="text-lg text-gray-600 mb-8">
+We help businesses thrive in the digital age with cutting-edge solutions in web development, design, analytics, and strategic consulting.
+</p>
+<div class="flex space-x-4">
+<a href="src/Services.html"><button class="bg-primary text-white px-8 py-3 !rounded-button hover:bg-primary/90 transition-colors whitespace-nowrap cursor-pointer">
+Get Started
+</button></a>
+<a href="about-us.html"><button class="border-2 border-primary text-primary px-8 py-3 !rounded-button hover:bg-primary/5 transition-colors whitespace-nowrap cursor-pointer">
+Learn More
+</button></a>
+</div>
+</div>
+<div class="relative overflow-hidden rounded-lg shadow-xl">
+  <div class="flex transition-transform duration-1000" id="imageSlider">
+    <img src="img/pic 5.jpg"
+    alt="Modern Tech Office"
+    class="object-cover w-full h-full min-w-full"/>
+    <img src="img/pic 3.jpg"
+    alt="Code Development"
+    class="object-cover w-full h-full min-w-full"/>
+	<img src="img/pic 2.jpg"
+    alt="Developers"
+    class="object-cover w-full h-full min-w-full"/>
+	<img src="img/pic 4.jpg"
+    alt="internet"
+    class="object-cover w-full h-full min-w-full"/>
+	<img src="img/pic 1.jpg"
+    alt="Work skills"
+    class="object-cover w-full h-full min-w-full">
+  </div>
+</div>
+</div>
+</div>
+</section>
+<!-- Services Section -->
+<section class="py-24 bg-white">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-16">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">Our Services</h2>
+<p class="text-lg text-gray-600">Comprehensive digital solutions tailored to your business needs</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+<div class="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-full mb-4">
+<i class="ri-code-line text-primary ri-lg"></i>
+</div>
+<h3 class="text-xl font-semibold mb-3">Web Development</h3>
+<p class="text-gray-600">Building and managing professional websites with cutting-edge technologies</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+<div class="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-full mb-4">
+<i class="ri-palette-line text-primary ri-lg"></i>
+</div>
+<h3 class="text-xl font-semibold mb-3">Graphics & Branding</h3>
+<p class="text-gray-600">Creating stunning visual identities that make your brand stand out</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+<div class="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-full mb-4">
+<i class="ri-bar-chart-line text-primary ri-lg"></i>
+</div>
+<h3 class="text-xl font-semibold mb-3">Data Analytics</h3>
+<p class="text-gray-600">Transforming raw data into actionable business insights</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+<div class="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-full mb-4">
+<i class="ri-lightbulb-line text-primary ri-lg"></i>
+</div>
+<h3 class="text-xl font-semibold mb-3">Business Consulting</h3>
+<p class="text-gray-600">Strategic guidance to help your business grow and succeed</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Stats Section -->
+<section class="py-24 bg-primary/5">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<div class="text-center">
+<div class="text-4xl font-bold text-primary mb-2">200+</div>
+<div class="text-gray-600">Projects Completed</div>
+</div>
+<div class="text-center">
+<div class="text-4xl font-bold text-primary mb-2">50+</div>
+<div class="text-gray-600">Team Members</div>
+</div>
+<div class="text-center">
+<div class="text-4xl font-bold text-primary mb-2">95%</div>
+<div class="text-gray-600">Client Satisfaction</div>
+</div>
+<div class="text-center">
+<div class="text-4xl font-bold text-primary mb-2">15+</div>
+<div class="text-gray-600">Countries Served</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20">
+<div class="container mx-auto px-6">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-bold mb-4">Why Choose Us</h2>
+<p class="text-gray-600 max-w-2xl mx-auto">
+We combine expertise, innovation, and dedication to deliver exceptional results for our clients.
+</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="text-center p-8">
+<div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+<i class="ri-team-line text-primary text-2xl"></i>
+</div>
+<h3 class="text-xl font-semibold mb-4">Expert Team</h3>
+<p class="text-gray-600">
+Our team of seasoned professionals brings years of industry experience and technical expertise.
+</p>
+</div>
+<div class="text-center p-8">
+<div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+<i class="ri-rocket-line text-primary text-2xl"></i>
+</div>
+<h3 class="text-xl font-semibold mb-4">Innovation First</h3>
+<p class="text-gray-600">
+We stay ahead of technology trends to provide cutting-edge solutions for our clients.
+</p>
+</div>
+<div class="text-center p-8">
+<div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+<i class="ri-customer-service-line text-primary text-2xl"></i>
+</div>
+<h3 class="text-xl font-semibold mb-4">24/7 Support</h3>
+<p class="text-gray-600">
+Round-the-clock support to ensure your business runs smoothly at all times.
+</p>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20 bg-gray-50">
+<div class="container mx-auto px-6">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-bold mb-4">Our Process</h2>
+<p class="text-gray-600 max-w-2xl mx-auto">
+We follow a structured approach to deliver successful projects.
+</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<div class="relative">
+<div class="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center mb-6">
+1
+</div>
+<h3 class="text-xl font-semibold mb-4">Discovery</h3>
+<p class="text-gray-600">
+Understanding your business needs and objectives.
+</p>
+</div>
+<div class="relative">
+<div class="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center mb-6">
+2
+</div>
+<h3 class="text-xl font-semibold mb-4">Planning</h3>
+<p class="text-gray-600">
+Developing a strategic roadmap for success.
+</p>
+</div>
+<div class="relative">
+<div class="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center mb-6">
+3
+</div>
+<h3 class="text-xl font-semibold mb-4">Execution</h3>
+<p class="text-gray-600">
+Implementing solutions with precision and care.
+</p>
+</div>
+<div class="relative">
+<div class="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center mb-6">
+4
+</div>
+<h3 class="text-xl font-semibold mb-4">Support</h3>
+<p class="text-gray-600">
+Ongoing maintenance and optimization.
+</p>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20">
+<div class="container mx-auto px-6">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-bold mb-4">Our Team</h2>
+<p class="text-gray-600 max-w-2xl mx-auto">
+Meet the experts behind our success.
+</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<div class="text-center">
+<img src="https://public.readdy.ai/ai/img_res/016b3934799204ead030012869c1dc67.jpg"
+alt="Team Member"
+class="w-48 h-48 rounded-full mx-auto mb-6 object-cover">
+<h3 class="text-xl font-semibold mb-2">Michael Anderson</h3>
+<p class="text-gray-600">CEO & Founder</p>
+</div>
+<div class="text-center">
+<img src="https://public.readdy.ai/ai/img_res/0f7f5378400971470e011e4c5377f417.jpg"
+alt="Team Member"
+class="w-48 h-48 rounded-full mx-auto mb-6 object-cover">
+<h3 class="text-xl font-semibold mb-2">Sarah Johnson</h3>
+<p class="text-gray-600">CTO</p>
+</div>
+<div class="text-center">
+<img src="https://public.readdy.ai/ai/img_res/d2a96ebf7403f76d54581d4896f71e99.jpg"
+alt="Team Member"
+class="w-48 h-48 rounded-full mx-auto mb-6 object-cover">
+<h3 class="text-xl font-semibold mb-2">David Chen</h3>
+<p class="text-gray-600">Lead Developer</p>
+</div>
+<div class="text-center">
+<img src="https://public.readdy.ai/ai/img_res/a48632aa4395fa0bab0511b2ba7c12cc.jpg"
+alt="Team Member"
+class="w-48 h-48 rounded-full mx-auto mb-6 object-cover">
+<h3 class="text-xl font-semibold mb-2">Emily Martinez</h3>
+<p class="text-gray-600">Design Director</p>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20 bg-primary text-white">
+<div class="container mx-auto px-6">
+<div class="text-center">
+<h2 class="text-4xl font-bold mb-8">Ready to Get Started?</h2>
+<p class="text-white/80 max-w-2xl mx-auto mb-12">
+Let's work together to bring your vision to life. Contact us today for a free consultation.
+</p>
+<button class="bg-white text-primary px-8 py-3 !rounded-button hover:bg-white/90 transition-colors"><a href="src/Services.html">
+Contact Us Now</a>
+</button>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-gray-900 text-white py-12">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<div>
+<div class="flex items-center mb-4">
+<img src="img/favicon.png" alt="Paraclete Logo" class="h-8 w-auto">
+</div>
+<p class="text-gray-400">Empowering businesses through digital excellence</p>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-4">Services</h4>
+<ul class="space-y-2">
+<li><a href="src/Services.html" class="text-gray-400 hover:text-white">Web Development</a></li>
+<li><a href="src/Services.html" class="text-gray-400 hover:text-white">Graphics & Branding</a></li>
+<li><a href="src/Services.html" class="text-gray-400 hover:text-white">Data Analytics</a></li>
+<li><a href="src/Services.html" class="text-gray-400 hover:text-white">Business Consulting</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-4">Company</h4>
+<ul class="space-y-2">
+<li><a href="about-us.html" class="text-gray-400 hover:text-white">About Us</a></li>
+<li><a href="team.html" class="text-gray-400 hover:text-white">Team</a></li>
+<li><a href="src/Services" class="text-gray-400 hover:text-white"><i<Get Started</i></a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-4">Connect</h4>
+<div class="flex space-x-4">
+<a href="#" class="text-gray-400 hover:text-white">
+<i class="ri-linkedin-fill ri-lg"></i>
+</a>
+<a href="#" class="text-gray-400 hover:text-white">
+<i class="ri-twitter-fill ri-lg"></i>
+</a>
+<a href="#" class="text-gray-400 hover:text-white">
+<i class="ri-facebook-fill ri-lg"></i>
+</a>
+<a href="#" class="text-gray-400 hover:text-white">
+<i class="ri-instagram-fill ri-lg"></i>
+</a>
+</div>
+</div>
+</div>
+<div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+<p>&copy; 2025 Paraclete Tech Outsourcing. All rights reserved.</p>
+</div>
+</div>
+</footer>
+<script>
+// Loading Screen
+window.addEventListener('load', function() {
+setTimeout(function() {
+document.getElementById('loadingScreen').style.opacity = '0';
+setTimeout(function() {
+document.getElementById('loadingScreen').style.display = 'none';
+}, 500);
+}, 1000);
+});
+// Mobile Menu Toggle
+document.getElementById('menuButton').addEventListener('click', function() {
+document.getElementById('mobileMenu').classList.toggle('active');
+});
+// Image Slider
+document.addEventListener('DOMContentLoaded', function() {
+const slider = document.getElementById('imageSlider');
+let position = 0;
+function slideImages() {
+position = position <= -400 ? 0 : position - 100;
+slider.style.transform = `translateX(${position}%)`;
+}
+setInterval(slideImages, 4000);
+});
+let currentSlide = 0;
+const sliderElement = document.getElementById('');
+const sliderButtons = document.querySelectorAll('[data-index]');
+function showSlide(index) {
+  currentSlide = index;
+  sliderElement.style.transform = `translateX(-${index * 100}%)`;
+  
+  // Update indicator buttons
+  sliderButtons.forEach((button, i) => {
+    if (i === index) {
+      button.classList.remove('bg-white/40');
+      button.classList.add('bg-white/70');
+    } else {
+      button.classList.remove('bg-white/70');
+      button.classList.add('bg-white/40');
+    }
+  });
+}
+// Set up click handlers for indicator buttons
+sliderButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const index = parseInt(button.getAttribute('data-index'));
+    showSlide(index);
+  });
+});
+// Auto slide every 5 seconds
+setInterval(() => {
+  currentSlide = (currentSlide + 1) % 2;
+  showSlide(currentSlide);
+}, 5000);
+// Form submission
+document.querySelector('form').addEventListener('submit', function(e) {
+e.preventDefault();
+const formData = new FormData(e.target);
+console.log('Form submitted:', Object.fromEntries(formData));
+// Add your form submission logic here
+});
+</script>
+</body>
+</html>

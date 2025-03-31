@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Services - Paraclete Tech Outsourcing</title>
+<link rel="icon" href="img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+primary: '#0066FF',
+secondary: '#00A3FF'
+},
+borderRadius: {
+'none': '0px',
+'sm': '4px',
+DEFAULT: '8px',
+'md': '12px',
+'lg': '16px',
+'xl': '20px',
+'2xl': '24px',
+'3xl': '32px',
+'full': '9999px',
+'button': '8px'
+}
+}
+}
+}
+</script>
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body { font-family: 'Inter', sans-serif; }
+
+.timeline-estimator {
+  position: relative;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-marker {
+  position: relative;
+  padding-left: 2rem;
+  border-left: 2px solid #0066FF;
+  margin-bottom: 1.5rem;
+}
+
+.timeline-marker::before {
+  content: '';
+  position: absolute;
+  left: -6px;
+  top: 0;
+  width: 10px;
+  height: 10px;
+  background: #0066FF;
+  border-radius: 50%;
+}
+
+.service-card {
+  transition: all 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+}
+
+.pricing-toggle {
+  position: relative;
+  width: 50px;
+  height: 26px;
+  border-radius: 13px;
+  background: #e5e7eb;
+  cursor: pointer;
+}
+
+.pricing-toggle::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 22px;
+  height: 22px;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.3s;
+}
+
+.pricing-toggle.active::after {
+  transform: translateX(24px);
+}
+
+.pricing-toggle.active {
+  background: #0066FF;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 500px;
+  width: 90%;
+}
+</style>
+</head>
+<body class="bg-gray-50">
+<header class="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-lg z-50 border-b border-gray-100">
+<nav class="container mx-auto px-6 h-20 flex items-center justify-between">
+<a href="Paraclete.html" class="flex items-center">
+<img src="img/favicon.png" alt="Paraclete Logo" class="h-8 w-auto">
+</a>
+<div class="hidden md:flex items-center space-x-8">
+<a href="Paraclete.html" data-readdy="true" class="text-gray-700 hover:text-primary transition-colors">Home</a>
+<a href="#" class="text-primary font-medium">Services</a>
+<a href="#" class="text-gray-700 hover:text-primary transition-colors">About</a>
+<a href="#" class="text-gray-700 hover:text-primary transition-colors">Contact</a>
+<button class="bg-primary text-white px-6 py-2 !rounded-button hover:bg-primary/90 transition-colors whitespace-nowrap">
+Get Started
+</button>
+</div>
+</nav>
+</header>
+
+<main class="pt-32">
+<section class="container mx-auto px-6 mb-20">
+<div class="flex items-center gap-2 text-sm text-gray-600 mb-6">
+<a href="Paraclete.html" data-readdy="true" class="hover:text-primary">Home</a>
+<i class="ri-arrow-right-s-line"></i>
+<span class="text-primary">Services</span>
+</div>
+
+<div class="text-center max-w-3xl mx-auto mb-20">
+<h1 class="text-4xl md:text-5xl font-bold mb-6">Our Comprehensive Services</h1>
+<p class="text-gray-600 text-lg">
+Discover our full range of technology solutions designed to transform your business and drive growth in the digital age.
+</p>
+</div>
+
+<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+<div class="service-card bg-white p-8 rounded-xl shadow-lg">
+<div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+<i class="ri-code-line text-primary text-2xl"></i>
+</div>
+<h3 class="text-xl font-semibold mb-4">Web Development</h3>
+<ul class="text-gray-600 space-y-3 mb-6">
+<li class="flex items-center gap-2">
+<i class="ri-checkbox-circle-line text-primary"></i>
+Custom Web Applications
+</li>
+<li class="flex items-center gap-2">
+<i class="ri-checkbox-circle-line text-primary"></i>
+E-commerce Solutions
+</li>
+<li class="flex items-center gap-2">
+<i class="ri-checkbox-circle-line text-primary"></i>
+API Development
+</li>
+</ul>
+<button onclick="showServiceDetails('web')" class="text-primary hover:text-primary/80 font-medium flex items-center gap-2">
+View Details
+<i class="ri-arrow-right-line"></i>
+</button>
+</div>
+
+<div class="service-card bg-white p-8 rounded-xl shadow-lg">
+<div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+<i class="ri-palette-line text-primary text-2xl"></i>
+</div>
+<h3 class="text-xl font-semibold mb-4">Graphics & Branding</h3>
+<ul class="text-gray-600 space-y-3 mb-6">
+<li class="flex items-center gap-2">
+<i class="ri-checkbox-circle-line text-primary"></i>
+Brand Identity Design
+</li>
+<li class="flex items-center gap-2">
+<i class="ri-checkbox-circle-line text-primary"></i>
+UI/UX Design
+</li>
+<li class="flex items-center gap-2">
+<i class="ri-checkbox-circle-line text-primary"></i>
+Marketing Materials
+</li>
+</ul>
+<button onclick="showServiceDetails('design')" class="text-primary hover:text-primary/80 font-medium flex items-center gap-2">
+View Details
+<i class="ri-arrow-right-line"></i>
+</button>
+</div>
+
+<div class="service-card bg-white p-8 rounded-xl shadow-lg">
+<div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+<i class="ri-bar-chart-line text-primary text-2xl"></i>
+</div>
+<h3 class="text-xl font-semibold mb-4">Data Analytics</h3>
+<ul class="text-gray-600 space-y-3 mb-6">
+<li class="flex items-center gap-2">
+<i class="ri-checkbox-circle-line text-primary"></i>
+Business Intelligence
+</li>
+<li class="flex items-center gap-2">
+<i class="ri-checkbox-circle-line text-primary"></i>
+Predictive Analytics
+</li>
+<li class="flex items-center gap-2">
+<i class="ri-checkbox-circle-line text-primary"></i>
+Data Visualization
+</li>
+</ul>
+<button onclick="showServiceDetails('analytics')" class="text-primary hover:text-primary/80 font-medium flex items-center gap-2">
+View Details
+<i class="ri-arrow-right-line"></i>
+</button>
+</div>
+
+<div class="service-card bg-white p-8 rounded-xl shadow-lg">
+<div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+<i class="ri-lightbulb-line text-primary text-2xl"></i>
+</div>
+<h3 class="text-xl font-semibold mb-4">Business Consulting</h3>
+<ul class="text-gray-600 space-y-3 mb-6">
+<li class="flex items-center gap-2">
+<i class="ri-checkbox-circle-line text-primary"></i>
+Digital Strategy
+</li>
+<li class="flex items-center gap-2">
+<i class="ri-checkbox-circle-line text-primary"></i>
+Process Optimization
+</li>
+<li class="flex items-center gap-2">
+<i class="ri-checkbox-circle-line text-primary"></i>
+Technology Advisory
+</li>
+</ul>
+<button onclick="showServiceDetails('consulting')" class="text-primary hover:text-primary/80 font-medium flex items-center gap-2">
+View Details
+<i class="ri-arrow-right-line"></i>
+</button>
+</div>
+</div>
+</section>
+
+<section class="bg-white py-20">
+<div class="container mx-auto px-6">
+<div class="text-center mb-12">
+<h2 class="text-3xl font-bold mb-4">Case Studies</h2>
+<p class="text-gray-600">See how we've helped businesses achieve their goals</p>
+</div>
+
+<div class="grid md:grid-cols-3 gap-8">
+<div class="bg-gray-50 rounded-xl overflow-hidden">
+<img src="https://public.readdy.ai/ai/img_res/55dd9d970a5f615fa03020cd813e78d2.jpg" alt="Case Study" class="w-full h-48 object-cover">
+<div class="p-6">
+<h3 class="text-xl font-semibold mb-2">E-commerce Platform</h3>
+<p class="text-gray-600 mb-4">Developed a scalable e-commerce solution for a retail chain</p>
+<div class="flex items-center justify-between">
+<span class="text-sm text-gray-500">Web Development</span>
+<button class="text-primary hover:text-primary/80">Read More</button>
+</div>
+</div>
+</div>
+
+<div class="bg-gray-50 rounded-xl overflow-hidden">
+<img src="https://public.readdy.ai/ai/img_res/c121d2c169fb268349c1dc974220df9b.jpg" alt="Case Study" class="w-full h-48 object-cover">
+<div class="p-6">
+<h3 class="text-xl font-semibold mb-2">Brand Transformation</h3>
+<p class="text-gray-600 mb-4">Complete rebranding for a tech startup</p>
+<div class="flex items-center justify-between">
+<span class="text-sm text-gray-500">Graphics & Branding</span>
+<button class="text-primary hover:text-primary/80">Read More</button>
+</div>
+</div>
+</div>
+
+<div class="bg-gray-50 rounded-xl overflow-hidden">
+<img src="https://public.readdy.ai/ai/img_res/ac64c21b5d49a9077826933a1368fd2d.jpg" alt="Case Study" class="w-full h-48 object-cover">
+<div class="p-6">
+<h3 class="text-xl font-semibold mb-2">Data-Driven Insights</h3>
+<p class="text-gray-600 mb-4">Analytics solution for a financial services firm</p>
+<div class="flex items-center justify-between">
+<span class="text-sm text-gray-500">Data Analytics</span>
+<button class="text-primary hover:text-primary/80">Read More</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="py-20">
+<div class="container mx-auto px-6">
+<div class="text-center mb-12">
+<h2 class="text-3xl font-bold mb-4">Ready to Start Your Project?</h2>
+<p class="text-gray-600 max-w-2xl mx-auto">
+Get in touch with our team to discuss your project requirements and receive a detailed proposal.
+</p>
+</div>
+<div class="max-w-4xl mx-auto">
+<form class="grid md:grid-cols-2 gap-6">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Name</label>
+<input type="text" class="w-full border border-gray-200 rounded-lg px-4 py-2.5" placeholder="Your name">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+<input type="email" class="w-full border border-gray-200 rounded-lg px-4 py-2.5" placeholder="your@email.com">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Phone</label>
+<input type="tel" class="w-full border border-gray-200 rounded-lg px-4 py-2.5" placeholder="Your phone number">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Service</label>
+<select class="w-full border border-gray-200 rounded-lg px-4 py-2.5">
+<option value="">-- Select a Field --</option>
+<option>Web Development</option>
+<option>Graphics & Branding</option>
+<option>Data Analytics</option>
+<option>Business Consulting</option>
+</select>
+</div>
+<div class="md:col-span-2">
+<label class="block text-sm font-medium text-gray-700 mb-2">Project Details</label>
+<textarea class="w-full border border-gray-200 rounded-lg px-4 py-2.5 h-32" placeholder="Tell us about your project"></textarea>
+</div>
+<div class="md:col-span-2 text-center">
+<button type="submit" id="submitBtn" class="bg-primary text-white px-8 py-3 !rounded-button hover:bg-primary/90 transition-colors">
+Submit Request
+</button>
+</div>
+</form>
+
+<!-- Success Modal -->
+<div id="successModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+  <div class="bg-white rounded-xl p-6 max-w-md w-full mx-4">
+    <div class="flex justify-between items-center mb-4">
+      <h3 class="text-xl font-semibold">Success!</h3>
+      <button class="text-gray-400 hover:text-gray-600" onclick="closeModal()">
+        <i class="ri-close-line text-2xl"></i>
+      </button>
+    </div>
+    <p class="text-gray-600 mb-6">Thank you for your request! Our team will contact you within 24 hours.</p>
+    <div class="text-center">
+      <button onclick="closeModal()" class="bg-primary text-white px-6 py-2 !rounded-button hover:bg-primary/90 transition-colors">
+        Close
+      </button>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.querySelector('form');
+  const submitBtn = document.getElementById('submitBtn');
+  const successModal = document.getElementById('successModal');
+  let modalTimeout;
+
+  function validateForm() {
+    const inputs = form.querySelectorAll('input, textarea, select');
+    let isValid = true;
+
+    // Remove existing error messages
+    form.querySelectorAll('.error-message').forEach(el => el.remove());
+    inputs.forEach(input => {
+      input.classList.remove('border-red-500');
+    });
+
+    inputs.forEach(input => {
+      if (!input.value.trim()) {
+        isValid = false;
+        input.classList.add('border-red-500');
+        
+        const errorMsg = document.createElement('p');
+        errorMsg.className = 'error-message text-red-500 text-sm mt-1';
+        errorMsg.textContent = 'This field is required';
+        input.parentNode.appendChild(errorMsg);
+      }
+
+      if (input.type === 'email' && input.value.trim()) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(input.value.trim())) {
+          isValid = false;
+          input.classList.add('border-red-500');
+          
+          const errorMsg = document.createElement('p');
+          errorMsg.className = 'error-message text-red-500 text-sm mt-1';
+          errorMsg.textContent = 'Please enter a valid email address';
+          input.parentNode.appendChild(errorMsg);
+        }
+      }
+
+      if (input.type === 'tel' && input.value.trim()) {
+        const phoneRegex = /^\+?[\d\s-]{10,}$/;
+        if (!phoneRegex.test(input.value.trim())) {
+          isValid = false;
+          input.classList.add('border-red-500');
+          
+          const errorMsg = document.createElement('p');
+          errorMsg.className = 'error-message text-red-500 text-sm mt-1';
+          errorMsg.textContent = 'Please enter a valid phone number';
+          input.parentNode.appendChild(errorMsg);
+        }
+      }
+    });
+
+    return isValid;
+  }
+
+  function showModal() {
+    successModal.classList.remove('hidden');
+    modalTimeout = setTimeout(closeModal, 5000);
+  }
+
+  function closeModal() {
+    successModal.classList.add('hidden');
+    clearTimeout(modalTimeout);
+  }
+
+  window.closeModal = closeModal;
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    if (validateForm()) {
+      showModal();
+      form.reset();
+    }
+  });
+});
+</script>
+</body>
+</html>
