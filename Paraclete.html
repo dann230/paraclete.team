@@ -6,6 +6,7 @@
 <title>Paraclete Tech Outsourcing</title>
 <link rel="icon" href="img/favicon.png">
 <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#0047AB',secondary:'#ffffff'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
@@ -37,6 +38,9 @@ DEFAULT: '8px',
 </script>
 <style>
 :where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+  font-family: 'Inter', sans-serif;
+}
 .loading-screen {
 position: fixed;
 top: 0;
@@ -102,11 +106,11 @@ transform: translateX(0);
 </div>
 <div class="hidden md:flex items-center space-x-8">
 <a href="Paraclete.html" class="nav-link text-gray-700 hover:text-primary">Home</a>
-<a href="services.html" class="nav-link text-gray-700 hover:text-primary">Services</a>
+<a href="/src/Services.html" class="nav-link text-gray-700 hover:text-primary">Services</a>
 <a href="Goals.html" class="nav-link text-gray-700 hover:text-primary">Goals</a>
 <a href="about-us.html" class="nav-link text-gray-700 hover:text-primary">About Us</a>
 <a href="fields.html" class="nav-link text-gray-700 hover:text-primary">Fields & Stacks</a>
-<a href="team.html" class="nav-link text-gray-700 hover:text-primary">Team Profiles</a>
+<button class="bg-primary text-white px-6 py-2 !rounded-button font-medium hover:bg-opacity-90 transition-colors whitespace-nowrap"><a href="/src/Services.html">Get Started</a></button>
 </div>
 <div class="md:hidden flex items-center">
 <button id="menuButton" class="text-gray-700 hover:text-primary">
@@ -123,7 +127,7 @@ transform: translateX(0);
 <a href="Goals.html" class="block px-3 py-2 text-gray-700 hover:bg-primary hover:text-white rounded-md">Goals</a>
 <a href="about-us.html" class="block px-3 py-2 text-gray-700 hover:bg-primary hover:text-white rounded-md">About Us</a>
 <a href="fields.html" class="block px-3 py-2 text-gray-700 hover:bg-primary hover:text-white rounded-md">Fields & Stacks</a>
-<a href="team.html" class="block px-3 py-2 text-gray-700 hover:bg-primary hover:text-white rounded-md">Team Profiles</a>
+<button class="bg-primary text-white px-6 py-2 !rounded-button font-medium hover:bg-opacity-90 transition-colors whitespace-nowrap"><a href="/src/Services.html">Get Started</a></button>
 </div>
 </div>
 </nav>
@@ -181,7 +185,7 @@ Learn More
 <div class="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-full mb-4">
 <i class="ri-code-line text-primary ri-lg"></i>
 </div>
-<h3 class="text-xl font-semibold mb-3">Web Development</h3>
+<h3 class="text-xl font-semibold mb-3">Web Design & Development</h3>
 <p class="text-gray-600">Building and managing professional websites with cutting-edge technologies</p>
 </div>
 <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
@@ -205,6 +209,27 @@ Learn More
 <h3 class="text-xl font-semibold mb-3">Business Consulting</h3>
 <p class="text-gray-600">Strategic guidance to help your business grow and succeed</p>
 </div>
+<div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+<div class="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-full mb-4">
+<i class="ri-pencil-line text-primary ri-lg"></i>
+</div>
+<h3 class="text-xl font-semibold mb-3">Copywriting Service</h3>
+<p class="text-gray-600">Craft compelling, persuasive content that engages your audience and drives results. From website copy to marketing materials, we create words that sell, inform, and inspire action.</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+<div class="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-full mb-4">
+<i class="ri-gift-2-line text-primary ri-lg"></i>
+</div>
+<h3 class="text-xl font-semibold mb-3">Corporate Branding</h3>
+<p class="text-gray-600">Corporate branding builds a strong, unified identity for your business, shaping how customers perceive and trust your brand. It includes your logo, messaging, and values to create consistency across all touchpoints, setting you apart from competitors.</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+<div class="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-full mb-4">
+<i class="ri-bar-chart-2-line text-primary ri-lg"></i>
+</div>
+<h3 class="text-xl font-semibold mb-3">Business Growth Solutions</h3>
+<p class="text-gray-600">From branding and design to consulting and data analytics, we craft strategies that drive success and enhance your market presence.</p>
+</div>
 </div>
 </div>
 </section>
@@ -225,7 +250,7 @@ Learn More
 <div class="text-gray-600">Client Satisfaction</div>
 </div>
 <div class="text-center">
-<div class="text-4xl font-bold text-primary mb-2">15+</div>
+<div class="text-4xl font-bold text-primary mb-2">2</div>
 <div class="text-gray-600">Countries Served</div>
 </div>
 </div>
@@ -318,46 +343,6 @@ Ongoing maintenance and optimization.
 </div>
 </div>
 </section>
-<section class="py-20">
-<div class="container mx-auto px-6">
-<div class="text-center mb-16">
-<h2 class="text-4xl font-bold mb-4">Our Team</h2>
-<p class="text-gray-600 max-w-2xl mx-auto">
-Meet the experts behind our success.
-</p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-<div class="text-center">
-<img src="https://public.readdy.ai/ai/img_res/016b3934799204ead030012869c1dc67.jpg"
-alt="Team Member"
-class="w-48 h-48 rounded-full mx-auto mb-6 object-cover">
-<h3 class="text-xl font-semibold mb-2">Michael Anderson</h3>
-<p class="text-gray-600">CEO & Founder</p>
-</div>
-<div class="text-center">
-<img src="https://public.readdy.ai/ai/img_res/0f7f5378400971470e011e4c5377f417.jpg"
-alt="Team Member"
-class="w-48 h-48 rounded-full mx-auto mb-6 object-cover">
-<h3 class="text-xl font-semibold mb-2">Sarah Johnson</h3>
-<p class="text-gray-600">CTO</p>
-</div>
-<div class="text-center">
-<img src="https://public.readdy.ai/ai/img_res/d2a96ebf7403f76d54581d4896f71e99.jpg"
-alt="Team Member"
-class="w-48 h-48 rounded-full mx-auto mb-6 object-cover">
-<h3 class="text-xl font-semibold mb-2">David Chen</h3>
-<p class="text-gray-600">Lead Developer</p>
-</div>
-<div class="text-center">
-<img src="https://public.readdy.ai/ai/img_res/a48632aa4395fa0bab0511b2ba7c12cc.jpg"
-alt="Team Member"
-class="w-48 h-48 rounded-full mx-auto mb-6 object-cover">
-<h3 class="text-xl font-semibold mb-2">Emily Martinez</h3>
-<p class="text-gray-600">Design Director</p>
-</div>
-</div>
-</div>
-</section>
 <section class="py-20 bg-primary text-white">
 <div class="container mx-auto px-6">
 <div class="text-center">
@@ -365,9 +350,9 @@ class="w-48 h-48 rounded-full mx-auto mb-6 object-cover">
 <p class="text-white/80 max-w-2xl mx-auto mb-12">
 Let's work together to bring your vision to life. Contact us today for a free consultation.
 </p>
-<button class="bg-white text-primary px-8 py-3 !rounded-button hover:bg-white/90 transition-colors"><a href="src/Services.html">
-Contact Us Now</a>
-</button>
+<a href="src/Services.html"><button class="bg-white text-primary px-8 py-3 !rounded-button hover:bg-white/90 transition-colors">
+Contact Us Now
+</button></a>
 </div>
 </div>
 </section>
@@ -391,11 +376,11 @@ Contact Us Now</a>
 </ul>
 </div>
 <div>
-<h4 class="text-lg font-semibold mb-4">Company</h4>
-<ul class="space-y-2">
+<h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+<ul class="space-y-3">
 <li><a href="about-us.html" class="text-gray-400 hover:text-white">About Us</a></li>
-<li><a href="team.html" class="text-gray-400 hover:text-white">Team</a></li>
-<li><a href="src/Services" class="text-gray-400 hover:text-white"><i<Get Started</i></a></li>
+<li><a href="fields.html" class="text-gray-400 hover:text-white">Fields & Stacks</a></li>
+<li><a href="src/Services" class="text-gray-400 hover:text-white"><i>Get Started</i></a></li>
 </ul>
 </div>
 <div>

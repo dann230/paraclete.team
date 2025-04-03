@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Goals - Paraclete Tech Outsourcing</title>
+<link rel="icon" href="img/favicon.png">
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#0047AB',secondary:'#ffffff'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+  font-family: 'Inter', sans-serif;
+}
+.hero-section {
+  background-image: url(background.jpg);
+  background-size: cover;
+  background-position: center;
+}
+.mobile-menu {
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 80%;
+  z-index: 50;
+}
+.mobile-menu.active {
+  transform: translateX(0);
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.custom-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #0047AB;
+  border-radius: 4px;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+}
+.custom-checkbox:checked {
+  background-color: #0047AB;
+}
+.custom-checkbox:checked::after {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.nav-link {
+position: relative;
+}
+.nav-link::after {
+content: '';
+position: absolute;
+width: 0;
+height: 2px;
+bottom: -2px;
+left: 0;
+background-color: #4169E1;
+transition: width 0.3s;
+}
+.nav-link:hover::after {
+width: 100%;
+}
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -9px;
+  top: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: #0047AB;
+  z-index: 10;
+}
+.timeline-item::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background-color: #0047AB;
+  z-index: 5;
+}
+.timeline-item:last-child::after {
+  height: 0;
+}
+.mobile-menu {
+transform: translateX(100%);
+transition: transform 0.3s ease-in-out;
+}
+.mobile-menu.active {
+transform: translateX(0);
+}
+</style>
+</head>
+<body class="min-h-screen bg-gray-50">
+<!-- Navigation -->
+<nav class="fixed top-0 left-0 right-0 bg-white shadow-sm z-50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-16">
+<div class="flex items-center">
+<a href="Paraclete.html" class="flex items-center">
+<img src="img/favicon.png" alt="Paraclete Logo" class="h-8 w-auto">
+</a>
+</div>
+<div class="hidden md:flex items-center space-x-8">
+<a href="Paraclete.html" class="nav-link text-gray-700 hover:text-primary">Home</a>
+<a href="/src/Services.html" class="nav-link text-gray-700 hover:text-primary">Services</a>
+<a href="Goals.html" class="nav-link text-gray-700 hover:text-primary">Goals</a>
+<a href="about-us.html" class="nav-link text-gray-700 hover:text-primary">About Us</a>
+<a href="fields.html" class="nav-link text-gray-700 hover:text-primary">Fields & Stacks</a>
+<button class="bg-primary text-white px-6 py-2 !rounded-button font-medium hover:bg-opacity-90 transition-colors whitespace-nowrap"><a href="/src/Services.html">Get Started</a></button>
+</div>
+<div class="md:hidden flex items-center">
+<button id="menuButton" class="text-gray-700 hover:text-primary">
+<i class="ri-menu-2-line ri-2x"></i>
+</button>
+</div>
+</div>
+</div>
+<!-- Mobile menu -->
+<div id="mobileMenu" class="mobile-menu fixed top-16 right-0 bottom-0 w-64 bg-white shadow-lg md:hidden">
+<div class="px-2 pt-2 pb-3 space-y-1">
+<a href="Paraclete.html" class="block px-3 py-2 text-gray-700 hover:bg-primary hover:text-white rounded-md">Home</a>
+<a href="/src/Services.html" class="block px-3 py-2 text-gray-700 hover:bg-primary hover:text-white rounded-md">Services</a>
+<a href="Goals.html" class="block px-3 py-2 text-gray-700 hover:bg-primary hover:text-white rounded-md">Goals</a>
+<a href="about-us.html" class="block px-3 py-2 text-gray-700 hover:bg-primary hover:text-white rounded-md">About Us</a>
+<a href="fields.html" class="block px-3 py-2 text-gray-700 hover:bg-primary hover:text-white rounded-md">Fields & Stacks</a>
+<button class="bg-primary text-white px-6 py-2 !rounded-button font-medium hover:bg-opacity-90 transition-colors whitespace-nowrap"><a href="/src/Services.html">Get Started</a></button>
+</div>
+</div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero-section pt-28 pb-20 md:pt-40 md:pb-32 relative">
+  <div class="absolute inset-0 bg-gradient-to-r from-primary/80 to-primary/30"></div>
+  <div class="container mx-auto px-4 relative z-10">
+    <div class="max-w-2xl">
+      <h1 class="text-4xl md:text-5xl font-bold text-white leading-tight mb-6">Our Goals & Mission</h1>
+      <p class="text-xl text-white/90 mb-8">At Paraclete Tech Outsourcing, we're driven by clear objectives that guide our work and shape our relationships with clients and talent alike.</p>
+      <div class="flex flex-wrap gap-4">
+        <button class="bg-white text-primary px-8 py-3 !rounded-button font-medium hover:bg-opacity-90 transition-colors whitespace-nowrap shadow-lg"><a href="#Vision">Explore Our Vision</a></button>
+        <a href="Paraclete.html" data-readdy="true" class="bg-transparent border-2 border-white text-white px-8 py-3 !rounded-button font-medium hover:bg-white/10 transition-colors whitespace-nowrap">Back to Home</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Mission & Vision Section -->
+<section class="py-20 bg-white" id="Vision">
+  <div class="container mx-auto px-4">
+    <div class="max-w-4xl mx-auto text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Our Mission & Vision</h2>
+      <p class="text-lg text-gray-600">We believe in creating meaningful connections between businesses and tech talent that drive innovation and growth for all parties involved.</p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <div>
+        <div class="bg-gray-50 rounded-lg p-8 shadow-lg">
+          <div class="w-16 h-16 flex items-center justify-center bg-primary/10 text-primary rounded-lg mb-6">
+            <i class="ri-flag-line ri-2x"></i>
+          </div>
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">Our Mission</h3>
+          <p class="text-gray-700 mb-6">To bridge the gap between businesses seeking technical expertise and skilled professionals looking for meaningful work opportunities, creating value for both sides through innovative outsourcing solutions.</p>
+          <ul class="space-y-3">
+            <li class="flex items-start">
+              <span class="w-6 h-6 flex items-center justify-center text-primary mr-2 flex-shrink-0">
+                <i class="ri-check-line"></i>
+              </span>
+              <span class="text-gray-700">Deliver exceptional value to our clients</span>
+            </li>
+            <li class="flex items-start">
+              <span class="w-6 h-6 flex items-center justify-center text-primary mr-2 flex-shrink-0">
+                <i class="ri-check-line"></i>
+              </span>
+              <span class="text-gray-700">Create meaningful opportunities for tech professionals</span>
+            </li>
+            <li class="flex items-start">
+              <span class="w-6 h-6 flex items-center justify-center text-primary mr-2 flex-shrink-0">
+                <i class="ri-check-line"></i>
+              </span>
+              <span class="text-gray-700">Foster innovation through collaboration</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div>
+        <div class="bg-gray-50 rounded-lg p-8 shadow-lg">
+          <div class="w-16 h-16 flex items-center justify-center bg-primary/10 text-primary rounded-lg mb-6">
+            <i class="ri-eye-line ri-2x"></i>
+          </div>
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">Our Vision</h3>
+          <p class="text-gray-700 mb-6">To become the most trusted tech outsourcing partner globally, known for our commitment to excellence, innovation, and creating lasting value for both clients and talent.</p>
+          <ul class="space-y-3">
+            <li class="flex items-start">
+              <span class="w-6 h-6 flex items-center justify-center text-primary mr-2 flex-shrink-0">
+                <i class="ri-check-line"></i>
+              </span>
+              <span class="text-gray-700">Lead the industry in client satisfaction</span>
+            </li>
+            <li class="flex items-start">
+              <span class="w-6 h-6 flex items-center justify-center text-primary mr-2 flex-shrink-0">
+                <i class="ri-check-line"></i>
+              </span>
+              <span class="text-gray-700">Set new standards for tech outsourcing excellence</span>
+            </li>
+            <li class="flex items-start">
+              <span class="w-6 h-6 flex items-center justify-center text-primary mr-2 flex-shrink-0">
+                <i class="ri-check-line"></i>
+              </span>
+              <span class="text-gray-700">Build a global community of tech professionals</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Strategic Goals Section -->
+<section class="py-20 bg-gray-50">
+  <div class="container mx-auto px-4">
+    <div class="max-w-4xl mx-auto text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Our Strategic Goals</h2>
+      <p class="text-lg text-gray-600">We've established clear objectives that guide our business decisions and help us deliver exceptional value to our stakeholders.</p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="goals-container">
+      <!-- Goals will be dynamically inserted here -->
+    </div>
+  </div>
+</section>
+
+<!-- KPI Section -->
+<section class="py-20 bg-white">
+  <div class="container mx-auto px-4">
+    <div class="max-w-4xl mx-auto text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Key Performance Indicators</h2>
+      <p class="text-lg text-gray-600">We measure our success through these key metrics that reflect our commitment to excellence and continuous improvement.</p>
+    </div>
+    
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <div class="bg-gray-50 rounded-lg p-8 shadow-lg">
+          <h3 class="text-2xl font-bold text-gray-900 mb-6">Performance Metrics</h3>
+          
+          <div class="space-y-6">
+            <div>
+              <div class="flex justify-between mb-2">
+                <span class="font-medium text-gray-700">Client Satisfaction</span>
+                <span class="font-medium text-primary">92%</span>
+              </div>
+              <div class="w-full bg-gray-200 rounded-full h-2.5">
+                <div class="bg-primary h-2.5 rounded-full" style="width: 92%"></div>
+              </div>
+            </div>
+            
+            <div>
+              <div class="flex justify-between mb-2">
+                <span class="font-medium text-gray-700">Project Completion Rate</span>
+                <span class="font-medium text-primary">97%</span>
+              </div>
+              <div class="w-full bg-gray-200 rounded-full h-2.5">
+                <div class="bg-primary h-2.5 rounded-full" style="width: 97%"></div>
+              </div>
+            </div>
+            
+            <div>
+              <div class="flex justify-between mb-2">
+                <span class="font-medium text-gray-700">Talent Retention</span>
+                <span class="font-medium text-primary">88%</span>
+              </div>
+              <div class="w-full bg-gray-200 rounded-full h-2.5">
+                <div class="bg-primary h-2.5 rounded-full" style="width: 88%"></div>
+              </div>
+            </div>
+            
+            <div>
+              <div class="flex justify-between mb-2">
+                <span class="font-medium text-gray-700">On-time Delivery</span>
+                <span class="font-medium text-primary">95%</span>
+              </div>
+              <div class="w-full bg-gray-200 rounded-full h-2.5">
+                <div class="bg-primary h-2.5 rounded-full" style="width: 95%"></div>
+              </div>
+            </div>
+            
+            <div>
+              <div class="flex justify-between mb-2">
+                <span class="font-medium text-gray-700">Client Referral Rate</span>
+                <span class="font-medium text-primary">78%</span>
+              </div>
+              <div class="w-full bg-gray-200 rounded-full h-2.5">
+                <div class="bg-primary h-2.5 rounded-full" style="width: 78%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Growth Timeline Section -->
+<section class="py-20 bg-gray-50">
+  <div class="container mx-auto px-4">
+    <div class="max-w-4xl mx-auto text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Our Growth Timeline</h2>
+      <p class="text-lg text-gray-600">Tracking our progress and celebrating key milestones as we work toward our long-term vision.</p>
+    </div>
+    
+    <div class="max-w-3xl mx-auto">
+      <div class="relative pl-10">
+        <div class="timeline-item relative pb-12">
+          <div class="bg-white rounded-lg p-6 shadow-md ml-4">
+            <h3 class="text-xl font-bold text-gray-900 mb-2">2022: Foundation</h3>
+            <p class="text-gray-700">Established Paraclete Tech Outsourcing with a focus on connecting businesses with skilled tech professionals.</p>
+            <div class="mt-4 flex items-center">
+              <span class="text-sm font-medium text-primary">Key achievement:</span>
+              <span class="text-sm text-gray-700 ml-2">Onboarded first 50 clients</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="timeline-item relative pb-12">
+          <div class="bg-white rounded-lg p-6 shadow-md ml-4">
+            <h3 class="text-xl font-bold text-gray-900 mb-2">2023: Expansion</h3>
+            <p class="text-gray-700">Expanded service offerings to include specialized tech solutions across multiple industries.</p>
+            <div class="mt-4 flex items-center">
+              <span class="text-sm font-medium text-primary">Key achievement:</span>
+              <span class="text-sm text-gray-700 ml-2">150% growth in client base</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="timeline-item relative pb-12">
+          <div class="bg-white rounded-lg p-6 shadow-md ml-4">
+            <h3 class="text-xl font-bold text-gray-900 mb-2">2023: Innovation</h3>
+            <p class="text-gray-700">Launched proprietary talent matching platform to optimize client-talent pairing process.</p>
+            <div class="mt-4 flex items-center">
+              <span class="text-sm font-medium text-primary">Key achievement:</span>
+              <span class="text-sm text-gray-700 ml-2">Reduced matching time by 65%</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="timeline-item relative pb-12">
+          <div class="bg-white rounded-lg p-6 shadow-md ml-4">
+            <h3 class="text-xl font-bold text-gray-900 mb-2">2024: Recognition</h3>
+            <p class="text-gray-700">Received industry recognition for excellence in tech outsourcing services and client satisfaction.</p>
+            <div class="mt-4 flex items-center">
+              <span class="text-sm font-medium text-primary">Key achievement:</span>
+              <span class="text-sm text-gray-700 ml-2">Top 10 Tech Outsourcing Provider award</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="timeline-item relative">
+          <div class="bg-white rounded-lg p-6 shadow-md ml-4">
+            <h3 class="text-xl font-bold text-gray-900 mb-2">2024: Global Reach</h3>
+            <p class="text-gray-700">Expanded operations to serve clients across 5 continents with a diverse talent pool of tech professionals.</p>
+            <div class="mt-4 flex items-center">
+              <span class="text-sm font-medium text-primary">Key achievement:</span>
+              <span class="text-sm text-gray-700 ml-2">Talent network exceeds 5,000 professionals</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Client Success Stories Section -->
+<section class="py-16 bg-gray-50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<h2 class="text-3xl font-bold text-center text-gray-900 mb-12">Client's Success Stories</h2>
+<div class="grid md:grid-cols-3 gap-8 [&>div:first-child]:md:col-span-2">
+<div class="testimonial-card bg-white p-6 rounded-lg shadow-md">
+<div class="flex items-center mb-4">
+<img src="img/Testimonial 1.jpg" class="w-12 h-12 rounded-full object-cover" alt="Testimonial 1">
+<div class="ml-4">
+<h4 class="font-semibold">Miss Jennifer </h4>
+<p class="text-gray-600">Patronizer since 2023</p>
+</div>
+</div>
+<p class="text-gray-600">"Paraclete delivers cutting-edge technology with precision and innovation. Their expertise and dedication to excellence make them a standout in the industry. A reliable partner for future-forward solutions!."</p>
+</div>
+<div class="testimonial-card bg-white p-6 rounded-lg shadow-md">
+<div class="flex items-center mb-4">
+<img src="img/Testimonial 2.jpg" class="w-12 h-12 rounded-full object-cover" alt="Testimonial 2">
+<div class="ml-4">
+<h4 class="font-semibold">Mr Adebayo</h4>
+<p class="text-gray-600">Patronizer since 2024</p>
+</div>
+</div>
+<p class="text-gray-600">"Paraclete is a game-changer in the tech industry! Their innovative solutions and commitment to excellence set them apart. The team's expertise and forward-thinking approach make them a trusted partner for any technology needs. Highly recommend!"</p>
+</div>
+<div class="testimonial-card bg-white p-6 rounded-lg shadow-md">
+<div class="flex items-center mb-4">
+<img src="img/Testimonial 3.jpg" class="w-12 h-12 rounded-full object-cover" alt="Testimonial 3">
+<div class="ml-4">
+<h4 class="font-semibold">Christopher & Mary Wilson</h4>
+<p class="text-gray-600">Patronizer since 2025</p>
+</div>
+</div>
+<p class="text-gray-600">"Working with Paraclete on my website was an amazing experience! They understood my vision, executed it flawlessly, and delivered a stunning, user-friendly site. The professionalism and attention to detail exceeded my expectations. Highly recommend their services!"</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-20 bg-primary">
+  <div class="container mx-auto px-4 text-center">
+    <h2 class="text-3xl md:text-4xl font-bold text-white mb-6"><b>Ready to Grow with Us?</b></h2>
+    <p class="text-xl text-white/90 mb-10 max-w-3xl mx-auto">Partner with Paraclete Tech Outsourcing and experience how our goal-oriented approach can help your business reach new heights.</p>
+    <div class="flex flex-wrap justify-center gap-4">
+      <button class="bg-white text-primary px-10 py-4 !rounded-button font-medium hover:bg-opacity-90 transition-colors whitespace-nowrap text-lg shadow-lg"><a href="/src/Services.html">Schedule a Consultation</a></button>
+      <a href="Paraclete.html" data-readdy="true" class="bg-transparent border-2 border-white text-white px-10 py-4 !rounded-button font-medium hover:bg-white/10 transition-colors whitespace-nowrap text-lg">Back to Home</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-white py-12">
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+      <div>
+        <a href="Paraclete.html" class="flex items-center">
+		<img src="img/favicon.png" alt="Paraclete Logo" class="h-8 w-auto">
+		</a>
+        <p class="text-gray-400 mb-6">Empowering businesses through innovative technology solutions since 2023.</p>
+        <div class="flex space-x-4">
+          <a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full hover:bg-primary transition-colors">
+            <i class="ri-facebook-fill"></i>
+          </a>
+          <a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full hover:bg-primary transition-colors">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full hover:bg-primary transition-colors">
+            <i class="ri-linkedin-fill"></i>
+          </a>
+          <a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full hover:bg-primary transition-colors">
+            <i class="ri-instagram-fill"></i>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold mb-6">Quick Links</h3>
+        <ul class="space-y-3">
+          <li><a href="Paraclete.html" data-readdy="true" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+          <li><a href="/src/Services.html" class="text-gray-400 hover:text-white transition-colors">Services</a></li>
+          <li><a href="Goals.html" class="text-white hover:text-white transition-colors">Goals</a></li>
+          <li><a href="about-us.html" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+          <li><a href="fields.html" class="text-gray-400 hover:text-white transition-colors">Fields & Stacks</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold mb-6">Services</h3>
+        <ul class="space-y-3">
+          <li><a href="/src/Services.html" class="text-gray-400 hover:text-white transition-colors">Web Development</a></li>
+          <li><a href="/src/Services.html" class="text-gray-400 hover:text-white transition-colors">Graphics & Branding</a></li>
+          <li><a href="/src/Services.html" class="text-gray-400 hover:text-white transition-colors">Data & Business Analytics</a></li>
+          <li><a href="/src/Services.html" class="text-gray-400 hover:text-white transition-colors">Business Consulting</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold mb-6">Contact Us</h3>
+        <ul class="space-y-3">
+          <li class="flex items-start">
+            <span class="w-5 h-5 flex items-center justify-center mr-3 mt-1">
+              <i class="ri-mail-line"></i>
+            </span>
+            <span class="text-gray-400"><b>Paracleteoutsourcing@gmail.com</b></span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="pt-8 border-t border-gray-800 text-center md:flex md:justify-between md:items-center">
+      <p class="text-gray-400 mb-4 md:mb-0">© 2025 Paraclete Tech Outsourcing. All rights reserved.</p>
+      <div class="flex justify-center space-x-6">
+        <a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a>
+        <a href="#" class="text-gray-400 hover:text-white transition-colors">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Mock Data
+const goals = [
+  {
+    icon: 'ri-global-line',
+    title: 'Unlimited Possibilities',
+    description: 'We provide tailored solutions across various industries, ensuring businesses have access to the right expertise.',
+    color: 'bg-blue-50'
+  },
+  {
+    icon: 'ri-rocket-line',
+    title: 'Business Empowerment',
+    description: 'We help companies scale by connecting them with skilled professionals who drive efficiency and innovation.',
+    color: 'bg-indigo-50'
+  },
+  {
+    icon: 'ri-user-star-line',
+    title: 'Talent Development',
+    description: 'We create meaningful work opportunities for professionals, fostering career growth and financial success.',
+    color: 'bg-purple-50'
+  },
+  {
+    icon: 'ri-lightbulb-flash-line',
+    title: 'Innovation & Adaptability',
+    description: 'We evolve with the industry, staying ahead of trends to offer cutting-edge outsourcing services.',
+    color: 'bg-teal-50'
+  },
+  {
+    icon: 'ri-team-line',
+    title: 'Long-Term Partnerships',
+    description: 'We believe in building trust and delivering results, making us a reliable outsourcing partner for businesses.',
+    color: 'bg-cyan-50'
+  },
+  {
+    icon: 'ri-arrow-up-circle-line',
+    title: 'Continuous Growth',
+    description: 'At Paraclete Tech Outsourcing, there are no limits—only solutions that drive sustainable growth.',
+    color: 'bg-green-50'
+  }
+];
+
+// Render Goals
+document.getElementById('goals-container').innerHTML = goals.map(goal => `
+  <div class="bg-white rounded-lg shadow-lg p-8 transition-transform hover:-translate-y-2 duration-300">
+    <div class="w-16 h-16 flex items-center justify-center ${goal.color} text-primary rounded-lg mb-6">
+      <i class="${goal.icon} ri-2x"></i>
+    </div>
+    <h3 class="text-xl font-semibold text-gray-900 mb-3">${goal.title}</h3>
+    <p class="text-gray-600">${goal.description}</p>
+  </div>
+`).join('');
+// Mobile Menu Toggle
+document.getElementById('menuButton').addEventListener('click', function() {
+document.getElementById('mobileMenu').classList.toggle('active');
+});
+
+// Smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+anchor.addEventListener('click', function (e) {
+e.preventDefault();
+
+const targetId = this.getAttribute('href');
+if (targetId === '#') {
+// Scroll to top when Home link is clicked
+window.scrollTo({
+top: 0,
+behavior: 'smooth'
+});
+return;
+}
+const targetElement = document.querySelector(targetId);
+if (targetElement) {
+window.scrollTo({
+top: targetElement.offsetTop - 80,
+behavior: 'smooth'
+});
+}
+});
+});
+// Render Success Stories
+document.getElementById('success-stories-container').innerHTML = successStories.map(story => `
+  <div class="bg-gray-50 rounded-lg shadow-lg p-8">
+    <div class="flex items-center mb-6">
+      <div class="w-14 h-14 flex items-center justify-center bg-primary text-white rounded-lg mr-4">
+        <i class="${story.logo} ri-lg"></i>
+      </div>
+      <div>
+        <h3 class="text-xl font-bold text-gray-900">${story.company}</h3>
+        <p class="text-gray-600">${story.industry}</p>
+      </div>
+    </div>
+    
+    <div class="space-y-4 mb-6">
+      <div>
+        <h4 class="font-semibold text-gray-900 mb-2">Challenge:</h4>
+        <p class="text-gray-700">${story.challenge}</p>
+      </div>
+      
+      <div>
+        <h4 class="font-semibold text-gray-900 mb-2">Solution:</h4>
+        <p class="text-gray-700">${story.solution}</p>
+      </div>
+      
+      <div>
+        <h4 class="font-semibold text-gray-900 mb-2">Results:</h4>
+        <ul class="space-y-2">
+          ${story.results.map(result => `
+            <li class="flex items-start">
+              <span class="w-5 h-5 flex items-center justify-center text-primary mr-2 flex-shrink-0">
+                <i class="ri-check-line"></i>
+              </span>
+              <span class="text-gray-700">${result}</span>
+            </li>
+          `).join('')}
+        </ul>
+      </div>
+    </div>
+    
+    <button class="text-primary font-medium flex items-center hover:underline">
+      Read Full Case Study
+      <span class="w-5 h-5 flex items-center justify-center ml-1">
+        <i class="ri-arrow-right-line"></i>
+      </span>
+    </button>
+  </div>
+`).join('');
+</script>
+</body>
+</html>
