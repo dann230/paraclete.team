@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paraclete - Fields & Stacks</title>
+<link rel="icon" href="img/favicon.png">
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#4F46E5',secondary:'#10B981'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Inter', sans-serif;
+}
+.hero-section {
+min-height: 80vh;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+color: #4F46E5; {
+border-bottom: 2px solid #4F46E5;
+}
+.mobile-menu {
+transform: translateX(100%);
+transition: transform 0.3s ease-in-out;
+}
+.mobile-menu.active {
+transform: translateX(0);
+}
+.project-card:hover .project-overlay {
+    opacity: 1;
+}
+.project-card:hover img {
+    transform: scale(1.05);
+}
+.portfolio-item {
+transition: all 0.3s ease;
+}
+.portfolio-item:hover {
+transform: translateY(-5px);
+}
+.filter-active {
+background-color: #4F46E5;
+color: white;
+}
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.8);
+}
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 90%;
+}
+</style>
+</head>
+<body class="bg-gray-50">
+<!-- Header -->
+<header class="fixed top-0 left-0 right-0 bg-white shadow-sm z-50">
+<div class="container mx-auto px-6 py-4 flex justify-between items-center">
+<a href="#" class="flex items-center">
+<img src="img/favicon.png" alt="Paraclete Logo" class="h-8">
+</a>
+<nav class="hidden md:flex items-center space-x-8">
+<a href="index.html" class="text-gray-600 hover:text-primary transition-colors">Home</a>
+<a href="services.html" class="text-gray-600 hover:text-primary transition-colors">Services</a>
+<a href="goals.html" class="text-gray-600 hover:text-primary transition-colors">Goals</a>
+<a href="about-us.html" class="text-gray-600 hover:text-primary transition-colors">About Us</a>
+<a href="#" data-readdy="true" class="text-primary font-medium border-b-2 border-primary pb-1"><b>Fields & Stacks</b></a>
+<button class="bg-primary text-white px-6 py-2 !rounded-button hover:bg-primary/90 transition-colors whitespace-nowrap">Get Started</button>
+</nav>
+<div class="md:hidden flex items-center">
+<button id="menuButton" class="text-gray-700 hover:text-primary">
+<i class="ri-menu-line ri-2x"></i>
+</button>
+</div>
+</div>
+</div>
+<!-- Mobile menu -->
+<div id="mobileMenu" class="mobile-menu fixed top-16 right-0 bottom-0 w-64 bg-white shadow-lg md:hidden">
+<div class="px-2 pt-2 pb-3 space-y-1">
+<a href="index.html" class="block px-3 py-2 text-gray-700 hover:bg-primary hover:text-white rounded-md">Home</a>
+<a href="services.html" class="block px-3 py-2 text-gray-700 hover:bg-primary hover:text-white rounded-md">Services</a>
+<a href="Goals.html" class="block px-3 py-2 text-gray-700 hover:bg-primary hover:text-white rounded-md">Goals</a>
+<a href="about-us.html" class="block px-3 py-2 text-gray-700 hover:bg-primary hover:text-white rounded-md">About Us</a>
+<a href="fields.html" class="block px-3 py-2 text-gray-700 hover:bg-primary hover:text-white rounded-md"><b>Fields & Stacks</b></a><br/>
+<button style="margin-left:45px" class="bg-primary text-white px-6 py-2 !rounded-button font-medium hover:bg-opacity-90 transition-colors whitespace-nowrap"><a href="services.html">Get Started</a></button>
+</div>
+</div>
+</header>
+<!-- Hero Section -->
+<section class="hero-section relative pt-32 pb-20 overflow-hidden">
+<div class="absolute inset-0 z-0">
+<video class="w-full h-full object-cover" autoplay loop muted playsinline>
+<source src="https://cdn.pixabay.com/video/2016/01/29/1992-153555258_tiny.mp4" type="video/mp4">
+</video>
+<div class="absolute inset-0 bg-black/50"></div>
+</div>
+<div class="container mx-auto px-6 w-full relative z-10">
+<div class="max-w-2xl">
+<h1 class="text-4xl md:text-5xl font-bold text-white mb-6">Our Fields & Tech Stacks</h1>
+<p class="text-xl text-white/90 mb-8">Explore our expertise across various industries and technology stacks that power our innovative solutions.</p>
+<div class="flex flex-wrap gap-4">
+<a href="#all-btn"><button class="bg-primary text-white px-8 py-3 !rounded-button hover:bg-primary/90 transition-colors whitespace-nowrap">View Portfolio</button></a>
+</div>
+</div>
+</div>
+</section>
+<!-- Role Filter Section -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button id="all-btn" class="px-6 py-3 !rounded-full bg-primary text-white font-medium hover:bg-blue-600 transition-colors whitespace-nowrap">All Projects</button>
+                <button id="web-btn" class="px-6 py-3 !rounded-full bg-white border border-gray-300 text-gray-700 font-medium hover:bg-gray-50 transition-colors whitespace-nowrap">Web Designers</button>
+                <button id="graphic-btn" class="px-6 py-3 !rounded-full bg-white border border-gray-300 text-gray-700 font-medium hover:bg-gray-50 transition-colors whitespace-nowrap">Graphic Designers</button>
+                <button id="data-btn" class="px-6 py-3 !rounded-full bg-white border border-gray-300 text-gray-700 font-medium hover:bg-gray-50 transition-colors whitespace-nowrap">Data Analytics</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Web Designers Section -->
+    <section id="web-section" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Web Design & Development</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Our web designers create stunning, responsive websites that deliver exceptional user experiences across all devices.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden project-card">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="img/interior.png" alt="Interior Design Website" class="w-full h-full object-cover object-top transition-transform duration-300">
+                        <div class="absolute inset-0 bg-primary bg-opacity-80 flex items-center justify-center opacity-0 transition-opacity duration-300 project-overlay">
+                            <div class="text-center text-white p-4">
+                                <h3 class="text-xl font-semibold mb-2">Interior Design Website</h3>
+                                <p class="mb-4">Responsive website showcasing galleries of works!</p>
+                                <button class="bg-white text-primary px-4 py-2 !rounded-button font-medium hover:bg-gray-100 transition-colors whitespace-nowrap preview-btn">View Project</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Interior Design Website</h3>
+                        <p class="text-gray-600 mb-4">A modern, responsive website for an interior design studio featuring project galleries, virtual consultations, and client portal access.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-100 text-primary text-xs font-medium px-3 py-1 rounded-full">HTML5</span>
+                            <span class="bg-blue-100 text-primary text-xs font-medium px-3 py-1 rounded-full">CSS3</span>
+                            <span class="bg-blue-100 text-primary text-xs font-medium px-3 py-1 rounded-full">JavaScript</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500">Completed: March 2025</span>
+                            <a href="Interior Design/index.html" class="inline-flex items-center text-primary font-medium">
+                                Live Preview
+                                <div class="w-5 h-5 flex items-center justify-center ml-1">
+                                    <i class="ri-arrow-right-line"></i>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden project-card">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="img/gym.jpg" alt="Fitness Website" class="w-full h-full object-cover object-top transition-transform duration-300">
+                        <div class="absolute inset-0 bg-primary bg-opacity-80 flex items-center justify-center opacity-0 transition-opacity duration-300 project-overlay">
+                            <div class="text-center text-white p-4">
+                                <h3 class="text-xl font-semibold mb-2">Gymnastics Academy Website</h3>
+                                <p class="mb-4">Dynamic website with class scheduling system</p>
+                                <button class="bg-white text-primary px-4 py-2 !rounded-button font-medium hover:bg-gray-100 transition-colors whitespace-nowrap preview-btn">View Project</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Gymnastics Academy Website</h3>
+                        <p class="text-gray-600 mb-4">A dynamic website for a gymnastics academy featuring class schedules, instructor profiles, and online registration system.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-100 text-primary text-xs font-medium px-3 py-1 rounded-full">Responsive</span>
+                            <span class="bg-blue-100 text-primary text-xs font-medium px-3 py-1 rounded-full">jQuery</span>
+                            <span class="bg-blue-100 text-primary text-xs font-medium px-3 py-1 rounded-full">Bootstrap</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500">Completed: August 2024</span>
+                            <a href="Gym/index.html" class="inline-flex items-center text-primary font-medium">
+                                Live Preview
+                                <div class="w-5 h-5 flex items-center justify-center ml-1">
+                                    <i class="ri-arrow-right-line"></i>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden project-card">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="img/carpenter.jpg" alt="Carpentry Website" class="w-full h-full object-cover object-top transition-transform duration-300">
+                        <div class="absolute inset-0 bg-primary bg-opacity-80 flex items-center justify-center opacity-0 transition-opacity duration-300 project-overlay">
+                            <div class="text-center text-white p-4">
+                                <h3 class="text-xl font-semibold mb-2">Carpentry Business Website</h3>
+                                <p class="mb-4">Portfolio website with project gallery and quote request</p>
+                                <button class="bg-white text-primary px-4 py-2 !rounded-button font-medium hover:bg-gray-100 transition-colors whitespace-nowrap preview-btn">View Project</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Carpentry Business Website</h3>
+                        <p class="text-gray-600 mb-4">A showcase website for a custom carpentry business featuring project portfolio, services, and online quote request system.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-100 text-primary text-xs font-medium px-3 py-1 rounded-full">Webflow</span>
+                            <span class="bg-blue-100 text-primary text-xs font-medium px-3 py-1 rounded-full">JavaScript</span>
+                            <span class="bg-blue-100 text-primary text-xs font-medium px-3 py-1 rounded-full">CSS Grid</span>
+                            <span class="bg-blue-100 text-primary text-xs font-medium px-3 py-1 rounded-full">Responsive</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500">Completed: February 2025</span>
+                            <a href="Carpentry/index.html" class="inline-flex items-center text-primary font-medium">
+                                Live Preview
+                                <div class="w-5 h-5 flex items-center justify-center ml-1">
+                                    <i class="ri-arrow-right-line"></i>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden project-card">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="img/hospital.png" alt="Hospital Website" class="w-full h-full object-cover object-top transition-transform duration-300">
+                        <div class="absolute inset-0 bg-primary bg-opacity-80 flex items-center justify-center opacity-0 transition-opacity duration-300 project-overlay">
+                            <div class="text-center text-white p-4">
+                                <h3 class="text-xl font-semibold mb-2">Regional Hospital Website</h3>
+                                <p class="mb-4">Comprehensive healthcare portal with patient resources</p>
+                                <button class="bg-white text-primary px-4 py-2 !rounded-button font-medium hover:bg-gray-100 transition-colors whitespace-nowrap preview-btn">View Project</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Regional Hospital Website</h3>
+                        <p class="text-gray-600 mb-4">A comprehensive website for a regional hospital with department information, doctor directories, and patient resources.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-100 text-primary text-xs font-medium px-3 py-1 rounded-full">Angular</span>
+                            <span class="bg-blue-100 text-primary text-xs font-medium px-3 py-1 rounded-full">Node.js</span>
+                            <span class="bg-blue-100 text-primary text-xs font-medium px-3 py-1 rounded-full">MongoDB</span>
+                            <span class="bg-blue-100 text-primary text-xs font-medium px-3 py-1 rounded-full">Express</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500">Completed: April 2023</span>
+                            <a href="Hospital/index.html" class="inline-flex items-center text-primary font-medium">
+                                Live Preview
+                                <div class="w-5 h-5 flex items-center justify-center ml-1">
+                                    <i class="ri-arrow-right-line"></i>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden project-card">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="img/lawyer.jpg" alt="Law Firm Website" class="w-full h-full object-cover object-top transition-transform duration-300">
+                        <div class="absolute inset-0 bg-primary bg-opacity-80 flex items-center justify-center opacity-0 transition-opacity duration-300 project-overlay">
+                            <div class="text-center text-white p-4">
+                                <h3 class="text-xl font-semibold mb-2">Law Firm Website</h3>
+                                <p class="mb-4">Professional website with case management system</p>
+                                <button class="bg-white text-primary px-4 py-2 !rounded-button font-medium hover:bg-gray-100 transition-colors whitespace-nowrap preview-btn">View Project</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Law Firm Website</h3>
+                        <p class="text-gray-600 mb-4">A professional website for a law firm featuring practice areas, attorney profiles, case studies, and client portal.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-100 text-primary text-xs font-medium px-3 py-1 rounded-full">Bootstrap</span>
+                            <span class="bg-blue-100 text-primary text-xs font-medium px-3 py-1 rounded-full">JavaScript</span>
+                            <span class="bg-blue-100 text-primary text-xs font-medium px-3 py-1 rounded-full">Tailwind CSS</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500">Completed: March 2024</span>
+                            <a href="law/index.html" class="inline-flex items-center text-primary font-medium">
+                                Live Preview
+                                <div class="w-5 h-5 flex items-center justify-center ml-1">
+                                    <i class="ri-arrow-right-line"></i>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden project-card">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="img/bootstrap-restaurant-template.jpg" alt="Restaurant Website" class="w-full h-full object-cover object-top transition-transform duration-300">
+                        <div class="absolute inset-0 bg-primary bg-opacity-80 flex items-center justify-center opacity-0 transition-opacity duration-300 project-overlay">
+                            <div class="text-center text-white p-4">
+                                <h3 class="text-xl font-semibold mb-2">Restaurant Website</h3>
+                                <p class="mb-4">Culinary website with online ordering and reservations</p>
+                                <button class="bg-white text-primary px-4 py-2 !rounded-button font-medium hover:bg-gray-100 transition-colors whitespace-nowrap preview-btn">View Project</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Restaurant Website</h3>
+                        <p class="text-gray-600 mb-4">A culinary website for a fine dining restaurant with online menu, reservation system, and food ordering capabilities.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-100 text-primary text-xs font-medium px-3 py-1 rounded-full">Next.js</span>
+                            <span class="bg-blue-100 text-primary text-xs font-medium px-3 py-1 rounded-full">Strapi CMS</span>
+                            <span class="bg-blue-100 text-primary text-xs font-medium px-3 py-1 rounded-full">Stripe</span>
+                            <span class="bg-blue-100 text-primary text-xs font-medium px-3 py-1 rounded-full">Bootstrap</span>
+							<span class="bg-blue-100 text-primary text-xs font-medium px-3 py-1 rounded-full">JavaScript</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500">Completed: December 2024</span>
+                            <a href="Restaurant/index.html" class="inline-flex items-center text-primary font-medium">
+                                Live Preview
+                                <div class="w-5 h-5 flex items-center justify-center ml-1">
+                                    <i class="ri-arrow-right-line"></i>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Graphic Designers Section -->
+    <section id="graphic-section" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Graphic Design</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Our graphic designers create visually stunning assets that effectively communicate your brand message across all platforms.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Logo Design Project 1 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden project-card">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://readdy.ai/api/search-image?query=A%2520collection%2520of%2520modern%2520logo%2520designs%2520for%2520various%2520businesses%2520arranged%2520in%2520a%2520professional%2520portfolio%2520display.%2520The%2520logos%2520feature%2520diverse%2520styles%2520including%2520minimalist%252C%2520geometric%252C%2520typography-based%252C%2520and%2520illustrative%2520approaches.%2520Each%2520logo%2520is%2520presented%2520on%2520a%2520clean%2520background%2520with%2520consistent%2520spacing%2520and%2520professional%2520presentation.%2520The%2520collection%2520demonstrates%2520versatility%2520in%2520design%2520approach%2520and%2520brand%2520identity%2520creation.&width=600&height=400&seq=12356&orientation=landscape" alt="Logo Design Collection" class="w-full h-full object-cover object-top transition-transform duration-300">
+                        <div class="absolute inset-0 bg-secondary bg-opacity-80 flex items-center justify-center opacity-0 transition-opacity duration-300 project-overlay">
+                            <div class="text-center text-white p-4">
+                                <h3 class="text-xl font-semibold mb-2">Corporate Logo Collection</h3>
+                                <p class="mb-4">Brand identity designs for various industries</p>
+                                <button class="bg-white text-secondary px-4 py-2 !rounded-button font-medium hover:bg-gray-100 transition-colors whitespace-nowrap preview-btn">View Project</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Corporate Logo Collection</h3>
+                        <p class="text-gray-600 mb-4">A collection of logo designs created for businesses across various industries, showcasing versatility in branding approaches.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-green-100 text-secondary text-xs font-medium px-3 py-1 rounded-full">Adobe Illustrator</span>
+                            <span class="bg-green-100 text-secondary text-xs font-medium px-3 py-1 rounded-full">Vector Art</span>
+                            <span class="bg-green-100 text-secondary text-xs font-medium px-3 py-1 rounded-full">Brand Identity</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Marketing Materials Project -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden project-card">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://readdy.ai/api/search-image?query=A%2520collection%2520of%2520professional%2520marketing%2520materials%2520including%2520flyers%252C%2520brochures%252C%2520business%2520cards%252C%2520and%2520promotional%2520items%2520arranged%2520in%2520a%2520portfolio%2520display.%2520The%2520designs%2520feature%2520cohesive%2520branding%252C%2520professional%2520layouts%252C%2520high-quality%2520photography%252C%2520and%2520compelling%2520typography.%2520Materials%2520are%2520shown%2520from%2520different%2520angles%2520on%2520a%2520clean%2520background%2520to%2520showcase%2520print%2520design%2520expertise%2520and%2520attention%2520to%2520detail.&width=600&height=400&seq=12357&orientation=landscape" alt="Marketing Materials" class="w-full h-full object-cover object-top transition-transform duration-300">
+                        <div class="absolute inset-0 bg-secondary bg-opacity-80 flex items-center justify-center opacity-0 transition-opacity duration-300 project-overlay">
+                            <div class="text-center text-white p-4">
+                                <h3 class="text-xl font-semibold mb-2">Marketing Collateral Suite</h3>
+                                <p class="mb-4">Comprehensive print and digital marketing materials</p>
+                                <button class="bg-white text-secondary px-4 py-2 !rounded-button font-medium hover:bg-gray-100 transition-colors whitespace-nowrap preview-btn">View Project</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Marketing Collateral Suite</h3>
+                        <p class="text-gray-600 mb-4">A comprehensive set of marketing materials including brochures, flyers, business cards, and digital assets for a technology firm.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-green-100 text-secondary text-xs font-medium px-3 py-1 rounded-full">Adobe InDesign</span>
+                            <span class="bg-green-100 text-secondary text-xs font-medium px-3 py-1 rounded-full">Print Design</span>
+                            <span class="bg-green-100 text-secondary text-xs font-medium px-3 py-1 rounded-full">Digital Assets</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Brand Identity Project -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden project-card">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://readdy.ai/api/search-image?query=A%2520comprehensive%2520brand%2520identity%2520system%2520displayed%2520as%2520a%2520cohesive%2520collection%2520including%2520logo%2520variations%252C%2520color%2520palette%252C%2520typography%2520samples%252C%2520business%2520cards%252C%2520letterhead%252C%2520and%2520brand%2520applications.%2520The%2520design%2520shows%2520a%2520complete%2520visual%2520identity%2520system%2520with%2520consistent%2520elements%2520across%2520multiple%2520touchpoints.%2520Professional%2520presentation%2520on%2520a%2520clean%2520background%2520with%2520attention%2520to%2520detail%2520in%2520showcasing%2520how%2520the%2520brand%2520elements%2520work%2520together.&width=600&height=400&seq=12358&orientation=landscape" alt="Brand Identity System" class="w-full h-full object-cover object-top transition-transform duration-300">
+                        <div class="absolute inset-0 bg-secondary bg-opacity-80 flex items-center justify-center opacity-0 transition-opacity duration-300 project-overlay">
+                            <div class="text-center text-white p-4">
+                                <h3 class="text-xl font-semibold mb-2">Complete Brand Identity System</h3>
+                                <p class="mb-4">Comprehensive visual identity for a startup</p>
+                                <button class="bg-white text-secondary px-4 py-2 !rounded-button font-medium hover:bg-gray-100 transition-colors whitespace-nowrap preview-btn">View Project</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Complete Brand Identity System</h3>
+                        <p class="text-gray-600 mb-4">A comprehensive brand identity system for a tech startup, including logo design, color palette, typography, and brand guidelines.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-green-100 text-secondary text-xs font-medium px-3 py-1 rounded-full">Branding</span>
+                            <span class="bg-green-100 text-secondary text-xs font-medium px-3 py-1 rounded-full">Adobe Creative Suite</span>
+                            <span class="bg-green-100 text-secondary text-xs font-medium px-3 py-1 rounded-full">Style Guide</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Packaging Design Project -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden project-card">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://readdy.ai/api/search-image?query=A%2520collection%2520of%2520creative%2520packaging%2520designs%2520for%2520various%2520products%2520displayed%2520as%2520a%2520professional%2520portfolio.%2520The%2520designs%2520show%2520different%2520packaging%2520types%2520including%2520boxes%252C%2520bottles%252C%2520bags%252C%2520and%2520containers%2520with%2520distinctive%2520branding%252C%2520graphics%252C%2520and%2520product%2520information.%2520Each%2520package%2520demonstrates%2520thoughtful%2520design%2520with%2520attention%2520to%2520materials%252C%2520structure%252C%2520and%2520visual%2520appeal.%2520The%2520collection%2520is%2520arranged%2520on%2520a%2520clean%2520background%2520to%2520showcase%2520the%2520details%2520of%2520each%2520design.&width=600&height=400&seq=12359&orientation=landscape" alt="Packaging Design" class="w-full h-full object-cover object-top transition-transform duration-300">
+                        <div class="absolute inset-0 bg-secondary bg-opacity-80 flex items-center justify-center opacity-0 transition-opacity duration-300 project-overlay">
+                            <div class="text-center text-white p-4">
+                                <h3 class="text-xl font-semibold mb-2">Product Packaging Design</h3>
+                                <p class="mb-4">Creative packaging solutions for consumer products</p>
+                                <button class="bg-white text-secondary px-4 py-2 !rounded-button font-medium hover:bg-gray-100 transition-colors whitespace-nowrap preview-btn">View Project</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Product Packaging Design</h3>
+                        <p class="text-gray-600 mb-4">Creative packaging designs for a line of organic food products, emphasizing sustainability and brand storytelling.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-green-100 text-secondary text-xs font-medium px-3 py-1 rounded-full">Packaging</span>
+                            <span class="bg-green-100 text-secondary text-xs font-medium px-3 py-1 rounded-full">3D Mockups</span>
+                            <span class="bg-green-100 text-secondary text-xs font-medium px-3 py-1 rounded-full">Sustainable Design</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Social Media Graphics Project -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden project-card">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://readdy.ai/api/search-image?query=A%2520collection%2520of%2520social%2520media%2520graphics%2520and%2520templates%2520displayed%2520as%2520a%2520cohesive%2520campaign%2520across%2520multiple%2520platforms.%2520The%2520designs%2520show%2520consistent%2520branding%2520adapted%2520for%2520different%2520social%2520media%2520formats%2520including%2520Instagram%2520posts%2520and%2520stories%252C%2520Facebook%2520headers%252C%2520Twitter%2520graphics%252C%2520and%2520LinkedIn%2520content.%2520The%2520collection%2520demonstrates%2520engaging%2520visual%2520storytelling%2520with%2520compelling%2520imagery%252C%2520typography%252C%2520and%2520calls-to-action%2520arranged%2520to%2520showcase%2520a%2520complete%2520social%2520media%2520strategy.&width=600&height=400&seq=12360&orientation=landscape" alt="Social Media Graphics" class="w-full h-full object-cover object-top transition-transform duration-300">
+                        <div class="absolute inset-0 bg-secondary bg-opacity-80 flex items-center justify-center opacity-0 transition-opacity duration-300 project-overlay">
+                            <div class="text-center text-white p-4">
+                                <h3 class="text-xl font-semibold mb-2">Social Media Campaign</h3>
+                                <p class="mb-4">Cohesive graphics for multi-platform social media</p>
+                                <button class="bg-white text-secondary px-4 py-2 !rounded-button font-medium hover:bg-gray-100 transition-colors whitespace-nowrap preview-btn">View Project</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Social Media Campaign</h3>
+                        <p class="text-gray-600 mb-4">A comprehensive social media graphics package for a product launch campaign across multiple platforms.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-green-100 text-secondary text-xs font-medium px-3 py-1 rounded-full">Social Media</span>
+                            <span class="bg-green-100 text-secondary text-xs font-medium px-3 py-1 rounded-full">Campaign Design</span>
+                            <span class="bg-green-100 text-secondary text-xs font-medium px-3 py-1 rounded-full">Adobe Photoshop</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Illustration Project -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden project-card">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://readdy.ai/api/search-image?query=A%2520collection%2520of%2520custom%2520digital%2520illustrations%2520created%2520for%2520various%2520commercial%2520projects%2520displayed%2520as%2520a%2520professional%2520portfolio.%2520The%2520illustrations%2520show%2520diverse%2520styles%2520including%2520character%2520design%252C%2520conceptual%2520illustrations%252C%2520infographics%252C%2520and%2520decorative%2520elements.%2520Each%2520illustration%2520demonstrates%2520artistic%2520skill%2520with%2520attention%2520to%2520composition%252C%2520color%2520theory%252C%2520and%2520storytelling.%2520The%2520collection%2520is%2520arranged%2520to%2520showcase%2520versatility%2520in%2520illustration%2520approaches%2520for%2520different%2520brand%2520needs.&width=600&height=400&seq=12361&orientation=landscape" alt="Digital Illustrations" class="w-full h-full object-cover object-top transition-transform duration-300">
+                        <div class="absolute inset-0 bg-secondary bg-opacity-80 flex items-center justify-center opacity-0 transition-opacity duration-300 project-overlay">
+                            <div class="text-center text-white p-4">
+                                <h3 class="text-xl font-semibold mb-2">Custom Digital Illustrations</h3>
+                                <p class="mb-4">Unique illustrations for various commercial projects</p>
+                                <button class="bg-white text-secondary px-4 py-2 !rounded-button font-medium hover:bg-gray-100 transition-colors whitespace-nowrap preview-btn">View Project</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Custom Digital Illustrations</h3>
+                        <p class="text-gray-600 mb-4">A series of custom digital illustrations created for various commercial projects, showcasing different styles and techniques.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-green-100 text-secondary text-xs font-medium px-3 py-1 rounded-full">Illustration</span>
+                            <span class="bg-green-100 text-secondary text-xs font-medium px-3 py-1 rounded-full">Digital Art</span>
+                            <span class="bg-green-100 text-secondary text-xs font-medium px-3 py-1 rounded-full">Procreate</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Data Analytics Section -->
+    <section id="data-section" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Data Analytics</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Our data analysts transform raw data into actionable insights with comprehensive analytics solutions that drive informed business decisions.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Drugs Sales Report Dashboard -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden project-card">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="img/kola/drug-sales.png" alt="Drugs Sales Report Dashboard" class="w-full h-full object-cover object-top transition-transform duration-300">
+                        <div class="absolute inset-0 bg-purple-600 bg-opacity-80 flex items-center justify-center opacity-0 transition-opacity duration-300 project-overlay">
+                            <div class="text-center text-white p-4">
+                                <h3 class="text-xl font-semibold mb-2">Pharmaceutical Sales Dashboard</h3>
+                                <p class="mb-4">Comprehensive analytics for drug sales performance</p>
+                                <button class="bg-white text-purple-600 px-4 py-2 !rounded-button font-medium hover:bg-gray-100 transition-colors whitespace-nowrap preview-btn">View Project</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Pharmaceutical Sales Dashboard</h3>
+                        <p class="text-gray-600 mb-4">An interactive dashboard providing comprehensive analysis of pharmaceutical sales data, including top/bottom performing drugs, revenue metrics, and profit margins.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-purple-100 text-purple-600 text-xs font-medium px-3 py-1 rounded-full">Power BI</span>
+                            <span class="bg-purple-100 text-purple-600 text-xs font-medium px-3 py-1 rounded-full">Data Visualization</span>
+                            <span class="bg-purple-100 text-purple-600 text-xs font-medium px-3 py-1 rounded-full">Healthcare Analytics</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Smartphone Production Project -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden project-card">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="img/kola/phone.png" alt="Smartphone Production Project Dashboard" class="w-full h-full object-cover object-top transition-transform duration-300">
+                        <div class="absolute inset-0 bg-purple-600 bg-opacity-80 flex items-center justify-center opacity-0 transition-opacity duration-300 project-overlay">
+                            <div class="text-center text-white p-4">
+                                <h3 class="text-xl font-semibold mb-2">Smartphone Market Analysis</h3>
+                                <p class="mb-4">Comprehensive market data for smartphone brands</p>
+                                <button class="bg-white text-purple-600 px-4 py-2 !rounded-button font-medium hover:bg-gray-100 transition-colors whitespace-nowrap preview-btn">View Project</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Smartphone Market Analysis</h3>
+                        <p class="text-gray-600 mb-4">A detailed market analysis dashboard for smartphone brands, comparing sales performance, technical specifications, and market share across different manufacturers.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-purple-100 text-purple-600 text-xs font-medium px-3 py-1 rounded-full">Tableau</span>
+                            <span class="bg-purple-100 text-purple-600 text-xs font-medium px-3 py-1 rounded-full">Market Analysis</span>
+                            <span class="bg-purple-100 text-purple-600 text-xs font-medium px-3 py-1 rounded-full">Consumer Tech</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Year End Sales Recap -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden project-card">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="img/kola/yearend.png" alt="Year End Sales Recap Dashboard" class="w-full h-full object-cover object-top transition-transform duration-300">
+                        <div class="absolute inset-0 bg-purple-600 bg-opacity-80 flex items-center justify-center opacity-0 transition-opacity duration-300 project-overlay">
+                            <div class="text-center text-white p-4">
+                                <h3 class="text-xl font-semibold mb-2">Retail Sales Analytics</h3>
+                                <p class="mb-4">Gender-based consumer behavior analysis</p>
+                                <button class="bg-white text-purple-600 px-4 py-2 !rounded-button font-medium hover:bg-gray-100 transition-colors whitespace-nowrap preview-btn">View Project</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Retail Sales Analytics</h3>
+                        <p class="text-gray-600 mb-4">A comprehensive sales analysis dashboard examining consumer behavior patterns by gender, product category preferences, and pricing sensitivity.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-purple-100 text-purple-600 text-xs font-medium px-3 py-1 rounded-full">Power BI</span>
+                            <span class="bg-purple-100 text-purple-600 text-xs font-medium px-3 py-1 rounded-full">Retail Analytics</span>
+                            <span class="bg-purple-100 text-purple-600 text-xs font-medium px-3 py-1 rounded-full">Consumer Insights</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- HR Dashboard -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden project-card">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="img/kola/HR1.png" alt="HR Dashboard" class="w-full h-full object-cover object-top transition-transform duration-300">
+                        <div class="absolute inset-0 bg-purple-600 bg-opacity-80 flex items-center justify-center opacity-0 transition-opacity duration-300 project-overlay">
+                            <div class="text-center text-white p-4">
+                                <h3 class="text-xl font-semibold mb-2">HR Analytics Dashboard</h3>
+                                <p class="mb-4">Comprehensive workforce analytics and insights</p>
+                                <button class="bg-white text-purple-600 px-4 py-2 !rounded-button font-medium hover:bg-gray-100 transition-colors whitespace-nowrap preview-btn">View Project</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">HR Analytics Dashboard</h3>
+                        <p class="text-gray-600 mb-4">A comprehensive HR analytics dashboard providing insights into workforce demographics, department performance, employee satisfaction, and talent management metrics.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-purple-100 text-purple-600 text-xs font-medium px-3 py-1 rounded-full">Tableau</span>
+                            <span class="bg-purple-100 text-purple-600 text-xs font-medium px-3 py-1 rounded-full">HR Analytics</span>
+                            <span class="bg-purple-100 text-purple-600 text-xs font-medium px-3 py-1 rounded-full">Workforce Insights</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Netflix Analysis Dashboard -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden project-card">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="img/kola/Netflix.png" alt="Netflix Dashboard" class="w-full h-full object-cover object-top transition-transform duration-300">
+                        <div class="absolute inset-0 bg-purple-600 bg-opacity-80 flex items-center justify-center opacity-0 transition-opacity duration-300 project-overlay">
+                            <div class="text-center text-white p-4">
+                                <h3 class="text-xl font-semibold mb-2">Global Netflix Analysis</h3>
+                                <p class="mb-4">Comprehensive financial metrics and forecasting</p>
+                                <button class="bg-white text-purple-600 px-4 py-2 !rounded-button font-medium hover:bg-gray-100 transition-colors whitespace-nowrap preview-btn">View Project</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Global Netflix Analysis</h3>
+                        <p class="text-gray-600 mb-4">This analysis examines Netflix’s global subscriber trends, showing strong performance across multiple regions. While North America remains a major market, significant growth is seen in Asia-Pacific and Latin America, supported by mobile-friendly plans and localized content. Europe continues to show stable engagement despite increasing competition. The data highlights Netflix’s effective strategy of combining diverse pricing models with regional content to expand its global reach.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-purple-100 text-purple-600 text-xs font-medium px-3 py-1 rounded-full">Financial Analysis</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Customer Segmentation Analysis -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden project-card">
+                    <div class="h-64 overflow-hidden relative">
+					<img src="img/kola/Heart Attack.png" alt="HR Dashboard" class="w-full h-full object-cover object-top transition-transform duration-300">
+                        <div class="w-full h-full"></div>
+                        <div class="absolute inset-0 bg-purple-600 bg-opacity-80 flex items-center justify-center opacity-0 transition-opacity duration-300 project-overlay">
+                            <div class="text-center text-white p-4">
+                                <h3 class="text-xl font-semibold mb-2">Heart Attack Analysis</h3>
+                                <p class="mb-4">Advanced clustering and behavioral analytics</p>
+                                <button class="bg-white text-purple-600 px-4 py-2 !rounded-button font-medium hover:bg-gray-100 transition-colors whitespace-nowrap preview-btn">View Project</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Heart Attack Analysis</h3>
+                        <p class="text-gray-600 mb-4">Heart attacks are most common among adults, with blood pressure as the leading risk factor. Cases are equally distributed between males and females, and more frequent in medium and low-income groups. Smoking, high cholesterol, and regional air pollution also contribute significantly.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-purple-100 text-purple-600 text-xs font-medium px-3 py-1 rounded-full">R</span>
+                            <span class="bg-purple-100 text-purple-600 text-xs font-medium px-3 py-1 rounded-full">Machine Learning</span>
+                            <span class="bg-purple-100 text-purple-600 text-xs font-medium px-3 py-1 rounded-full">Customer Analytics</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack Overview -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Technology Stacks</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">We leverage a wide range of technologies to deliver optimal solutions for every project requirement.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Web Development Stack -->
+                <div class="bg-white rounded-lg shadow-lg p-8">
+                    <div class="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="ri-code-s-slash-line ri-2x text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Web Development</h3>
+                    <div class="mb-6">
+                        <h4 class="text-lg font-medium text-gray-800 mb-3">Frontend</h4>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-100 text-primary text-xs font-medium px-3 py-1 rounded-full">React</span>
+                            <span class="bg-blue-100 text-primary text-xs font-medium px-3 py-1 rounded-full">Vue.js</span>
+                            <span class="bg-blue-100 text-primary text-xs font-medium px-3 py-1 rounded-full">Angular</span>
+                            <span class="bg-blue-100 text-primary text-xs font-medium px-3 py-1 rounded-full">Next.js</span>
+                            <span class="bg-blue-100 text-primary text-xs font-medium px-3 py-1 rounded-full">Tailwind CSS</span>
+                            <span class="bg-blue-100 text-primary text-xs font-medium px-3 py-1 rounded-full">Bootstrap</span>
+                        </div>
+                    </div>
+                    <div class="mb-6">
+                        <h4 class="text-lg font-medium text-gray-800 mb-3">Backend</h4>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-100 text-primary text-xs font-medium px-3 py-1 rounded-full">Node.js</span>
+                            <span class="bg-blue-100 text-primary text-xs font-medium px-3 py-1 rounded-full">Express</span>
+                            <span class="bg-blue-100 text-primary text-xs font-medium px-3 py-1 rounded-full">PHP</span>
+                            <span class="bg-blue-100 text-primary text-xs font-medium px-3 py-1 rounded-full">Laravel</span>
+                            <span class="bg-blue-100 text-primary text-xs font-medium px-3 py-1 rounded-full">Django</span>
+                            <span class="bg-blue-100 text-primary text-xs font-medium px-3 py-1 rounded-full">Ruby on Rails</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-medium text-gray-800 mb-3">CMS & E-commerce</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-100 text-primary text-xs font-medium px-3 py-1 rounded-full">WordPress</span>
+                            <span class="bg-blue-100 text-primary text-xs font-medium px-3 py-1 rounded-full">Shopify</span>
+                            <span class="bg-blue-100 text-primary text-xs font-medium px-3 py-1 rounded-full">WooCommerce</span>
+                            <span class="bg-blue-100 text-primary text-xs font-medium px-3 py-1 rounded-full">Strapi</span>
+                            <span class="bg-blue-100 text-primary text-xs font-medium px-3 py-1 rounded-full">Contentful</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Graphic Design Stack -->
+                <div class="bg-white rounded-lg shadow-lg p-8">
+                    <div class="w-16 h-16 bg-green-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="ri-palette-line ri-2x text-secondary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Graphic Design</h3>
+                    <div class="mb-6">
+                        <h4 class="text-lg font-medium text-gray-800 mb-3">Design Software</h4>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-green-100 text-secondary text-xs font-medium px-3 py-1 rounded-full">Adobe Photoshop</span>
+                            <span class="bg-green-100 text-secondary text-xs font-medium px-3 py-1 rounded-full">Adobe Illustrator</span>
+                            <span class="bg-green-100 text-secondary text-xs font-medium px-3 py-1 rounded-full">Sketch</span>
+                            <span class="bg-green-100 text-secondary text-xs font-medium px-3 py-1 rounded-full">Adobe XD</span>
+                            <span class="bg-green-100 text-secondary text-xs font-medium px-3 py-1 rounded-full">Canva</span>
+                            <span class="bg-green-100 text-secondary text-xs font-medium px-3 py-1 rounded-full">Corel Draw</span>
+                        </div>
+                    </div>
+                    <div class="mb-6">
+                        <h4 class="text-lg font-medium text-gray-800 mb-3">Motion & 3D</h4>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-green-100 text-secondary text-xs font-medium px-3 py-1 rounded-full">Adobe After Effects</span>
+                            <span class="bg-green-100 text-secondary text-xs font-medium px-3 py-1 rounded-full">Adobe Premiere Pro</span>
+                            <span class="bg-green-100 text-secondary text-xs font-medium px-3 py-1 rounded-full">Blender</span>
+                            <span class="bg-green-100 text-secondary text-xs font-medium px-3 py-1 rounded-full">Cinema 4D</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-medium text-gray-800 mb-3">Illustration & Digital Art</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-green-100 text-secondary text-xs font-medium px-3 py-1 rounded-full">Procreate</span>
+                            <span class="bg-green-100 text-secondary text-xs font-medium px-3 py-1 rounded-full">Clip Studio Paint</span>
+                            <span class="bg-green-100 text-secondary text-xs font-medium px-3 py-1 rounded-full">Adobe Fresco</span>
+                            <span class="bg-green-100 text-secondary text-xs font-medium px-3 py-1 rounded-full">Affinity Designer</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Data Analytics Stack -->
+                <div class="bg-white rounded-lg shadow-lg p-8">
+                    <div class="w-16 h-16 bg-purple-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="ri-bar-chart-line ri-2x text-purple-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Data Analytics</h3>
+                    <div class="mb-6">
+                        <h4 class="text-lg font-medium text-gray-800 mb-3">Data Processing</h4>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-purple-100 text-purple-600 text-xs font-medium px-3 py-1 rounded-full">Python</span>
+                            <span class="bg-purple-100 text-purple-600 text-xs font-medium px-3 py-1 rounded-full">R</span>
+                            <span class="bg-purple-100 text-purple-600 text-xs font-medium px-3 py-1 rounded-full">SQL</span>
+                            <span class="bg-purple-100 text-purple-600 text-xs font-medium px-3 py-1 rounded-full">Pandas</span>
+                            <span class="bg-purple-100 text-purple-600 text-xs font-medium px-3 py-1 rounded-full">NumPy</span>
+                            <span class="bg-purple-100 text-purple-600 text-xs font-medium px-3 py-1 rounded-full">SciPy</span>
+                        </div>
+                    </div>
+                    <div class="mb-6">
+                        <h4 class="text-lg font-medium text-gray-800 mb-3">Visualization Tools</h4>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-purple-100 text-purple-600 text-xs font-medium px-3 py-1 rounded-full">Tableau</span>
+                            <span class="bg-purple-100 text-purple-600 text-xs font-medium px-3 py-1 rounded-full">Power BI</span>
+                            <span class="bg-purple-100 text-purple-600 text-xs font-medium px-3 py-1 rounded-full">D3.js</span>
+                            <span class="bg-purple-100 text-purple-600 text-xs font-medium px-3 py-1 rounded-full">Matplotlib</span>
+                            <span class="bg-purple-100 text-purple-600 text-xs font-medium px-3 py-1 rounded-full">Seaborn</span>
+                            <span class="bg-purple-100 text-purple-600 text-xs font-medium px-3 py-1 rounded-full">Plotly</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-medium text-gray-800 mb-3">Machine Learning</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-purple-100 text-purple-600 text-xs font-medium px-3 py-1 rounded-full">Scikit-learn</span>
+                            <span class="bg-purple-100 text-purple-600 text-xs font-medium px-3 py-1 rounded-full">TensorFlow</span>
+                            <span class="bg-purple-100 text-purple-600 text-xs font-medium px-3 py-1 rounded-full">PyTorch</span>
+                            <span class="bg-purple-100 text-purple-600 text-xs font-medium px-3 py-1 rounded-full">Keras</span>
+                            <span class="bg-purple-100 text-purple-600 text-xs font-medium px-3 py-1 rounded-full">XGBoost</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-primary bg-opacity-5">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Ready to leverage our technical expertise?</h2>
+                <p class="text-lg text-gray-600 mb-8">Get in touch with us today to discuss how our specialized teams can help bring your project to life.</p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="src/Services.html"><button class="bg-primary text-white px-8 py-3 !rounded-button font-medium hover:bg-blue-600 transition-colors whitespace-nowrap">Start a Project</button></a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Image Preview Modal -->
+<div id="image-modal" class="modal">
+    <span class="close cursor-pointer absolute top-4 right-4 text-white text-4xl">&times;</span>
+    <img class="modal-content" id="preview-image">
+</div>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-white pt-16 pb-8">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+            <div>
+                <div class="flex items-center mb-4">
+					<img src="img/favicon.png" alt="Paraclete Logo" class="h-11 w-auto">
+				</div>
+                <p class="text-gray-400 mb-6">Collective tech expertise delivering comprehensive solutions for modern businesses.</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                        <i class="ri-linkedin-fill ri-lg"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                        <i class="ri-twitter-x-fill ri-lg"></i>
+                    </a>
+                    <a href="https://www.instagram.com/paraclete_outsourcing?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                        <i class="ri-instagram-fill ri-lg"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                        <i class="ri-facebook-fill ri-lg"></i>
+                    </a>
+                </div>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                <ul class="space-y-3">
+                    <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+                    <li><a href="services.html" class="text-gray-400 hover:text-white transition-colors">Services</a></li>
+                    <li><a href="goals.html" class="text-gray-400 hover:text-white transition-colors">Goals</a></li>
+                    <li><a href="about-us.html" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                    <li><a href="#" data-readdy="true" class="text-gray-400 hover:text-white transition-colors"><span style="color:white">Fields & Stacks</span></a></li>
+                    <li><a href="/src/Services" class="text-gray-400 hover:text-white transition-colors">Get Started</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Services</h3>
+                <ul class="space-y-3">
+                    <li><a href="/src/Services.html" class="text-gray-400 hover:text-white transition-colors">Web Development</a></li>
+                    <li><a href="/src/Services.html" class="text-gray-400 hover:text-white transition-colors">Graphics Design</a></li>
+                    <li><a href="/src/Services.html" class="text-gray-400 hover:text-white transition-colors">Data Analytics</a></li>
+                    <li><a href="/src/Services.html" class="text-gray-400 hover:text-white transition-colors">E-commerce Solutions</a></li>
+                    <li><a href="/src/Services.html" class="text-gray-400 hover:text-white transition-colors">Mobile App Development</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Subscribe</h3>
+                <p class="text-gray-400 mb-4">Stay updated with our latest news and offers.</p>
+                <form action="https://usebasin.com/f/47e1f91e1d55" method="POST" class="mb-4">
+                    <div class="flex">
+                        <input type="email" name="email" placeholder="Your email" class="bg-gray-800 text-gray-200 px-4 py-2 !rounded-button rounded-r-none w-full border-none text-sm">
+                        <button type="submit" class="bg-primary text-white px-4 py-2 !rounded-button rounded-l-none whitespace-nowrap">Subscribe</button>
+                    </div>
+                </form>
+                <p class="text-gray-500 text-sm">By subscribing, you agree to our Privacy Policy.</p>
+            </div>
+        </div>
+        <div class="border-t border-gray-800 pt-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 text-sm mb-4 md:mb-0">© 2025 Paraclete. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-500 text-sm hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="text-gray-500 text-sm hover:text-white transition-colors">Terms of Service</a>
+                    <a href="#" class="text-gray-500 text-sm hover:text-white transition-colors">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script>
+// Smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+anchor.addEventListener('click', function (e) {
+e.preventDefault();
+
+const targetId = this.getAttribute('href');
+if (targetId === '#') {
+// Scroll to top when Home link is clicked
+window.scrollTo({
+top: 0,
+behavior: 'smooth'
+});
+return;
+}
+const targetElement = document.querySelector(targetId);
+if (targetElement) {
+window.scrollTo({
+top: targetElement.offsetTop - 80,
+behavior: 'smooth'
+});
+}
+});
+});
+</script>
+<script>
+// Mobile Menu Toggle
+document.getElementById('menuButton').addEventListener('click', function() {
+document.getElementById('mobileMenu').classList.toggle('active');
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Role filter buttons
+    const allBtn = document.getElementById('all-btn');
+    const webBtn = document.getElementById('web-btn');
+    const graphicBtn = document.getElementById('graphic-btn');
+    const dataBtn = document.getElementById('data-btn');
+    
+    const webSection = document.getElementById('web-section');
+    const graphicSection = document.getElementById('graphic-section');
+    const dataSection = document.getElementById('data-section');
+    
+    allBtn.addEventListener('click', function() {
+        allBtn.classList.add('bg-primary', 'text-white');
+        allBtn.classList.remove('bg-white', 'border', 'border-gray-300', 'text-gray-700');
+        
+        webBtn.classList.remove('bg-primary', 'text-white');
+        webBtn.classList.add('bg-white', 'border', 'border-gray-300', 'text-gray-700');
+        
+        graphicBtn.classList.remove('bg-primary', 'text-white');
+        graphicBtn.classList.add('bg-white', 'border', 'border-gray-300', 'text-gray-700');
+        
+        dataBtn.classList.remove('bg-primary', 'text-white');
+        dataBtn.classList.add('bg-white', 'border', 'border-gray-300', 'text-gray-700');
+        
+        webSection.style.display = 'block';
+        graphicSection.style.display = 'block';
+        dataSection.style.display = 'block';
+    });
+    
+    webBtn.addEventListener('click', function() {
+        webBtn.classList.add('bg-primary', 'text-white');
+        webBtn.classList.remove('bg-white', 'border', 'border-gray-300', 'text-gray-700');
+        
+        allBtn.classList.remove('bg-primary', 'text-white');
+        allBtn.classList.add('bg-white', 'border', 'border-gray-300', 'text-gray-700');
+        
+        graphicBtn.classList.remove('bg-primary', 'text-white');
+        graphicBtn.classList.add('bg-white', 'border', 'border-gray-300', 'text-gray-700');
+        
+        dataBtn.classList.remove('bg-primary', 'text-white');
+        dataBtn.classList.add('bg-white', 'border', 'border-gray-300', 'text-gray-700');
+        
+        webSection.style.display = 'block';
+        graphicSection.style.display = 'none';
+        dataSection.style.display = 'none';
+    });
+    
+    graphicBtn.addEventListener('click', function() {
+        graphicBtn.classList.add('bg-primary', 'text-white');
+        graphicBtn.classList.remove('bg-white', 'border', 'border-gray-300', 'text-gray-700');
+        
+        allBtn.classList.remove('bg-primary', 'text-white');
+        allBtn.classList.add('bg-white', 'border', 'border-gray-300', 'text-gray-700');
+        
+        webBtn.classList.remove('bg-primary', 'text-white');
+        webBtn.classList.add('bg-white', 'border', 'border-gray-300', 'text-gray-700');
+        
+        dataBtn.classList.remove('bg-primary', 'text-white');
+        dataBtn.classList.add('bg-white', 'border', 'border-gray-300', 'text-gray-700');
+        
+        webSection.style.display = 'none';
+        graphicSection.style.display = 'block';
+        dataSection.style.display = 'none';
+    });
+    
+    dataBtn.addEventListener('click', function() {
+        dataBtn.classList.add('bg-primary', 'text-white');
+        dataBtn.classList.remove('bg-white', 'border', 'border-gray-300', 'text-gray-700');
+        
+        allBtn.classList.remove('bg-primary', 'text-white');
+        allBtn.classList.add('bg-white', 'border', 'border-gray-300', 'text-gray-700');
+        
+        webBtn.classList.remove('bg-primary', 'text-white');
+        webBtn.classList.add('bg-white', 'border', 'border-gray-300', 'text-gray-700');
+        
+        graphicBtn.classList.remove('bg-primary', 'text-white');
+        graphicBtn.classList.add('bg-white', 'border', 'border-gray-300', 'text-gray-700');
+        
+        webSection.style.display = 'none';
+        graphicSection.style.display = 'none';
+        dataSection.style.display = 'block';
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Image preview modal
+    const modal = document.getElementById('image-modal');
+    const modalImg = document.getElementById('preview-image');
+    const previewBtns = document.querySelectorAll('.preview-btn');
+    const closeBtn = document.querySelector('.close');
+    
+    previewBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const imgSrc = this.closest('.project-card').querySelector('img').src;
+            modal.style.display = "flex";
+            modalImg.src = imgSrc;
+        });
+    });
+    
+    closeBtn.addEventListener('click', function() {
+        modal.style.display = "none";
+    });
+    
+    window.addEventListener('click', function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize Financial Chart
+    const financialChart = echarts.init(document.getElementById('financial-chart'));
+    const financialOption = {
+        animation: false,
+        title: {
+            text: 'Quarterly Revenue & Profit',
+            left: 'center',
+            textStyle: {
+                color: '#1f2937'
+            }
+        },
+        tooltip: {
+            trigger: 'axis',
+            backgroundColor: 'rgba(255, 255, 255, 0.8)',
+            textStyle: {
+                color: '#1f2937'
+            }
+        },
+        legend: {
+            data: ['Revenue', 'Profit'],
+            bottom: 0,
+            textStyle: {
+                color: '#1f2937'
+            }
+        },
+        xAxis: {
+            type: 'category',
+            data: ['Q1', 'Q2', 'Q3', 'Q4'],
+            axisLine: {
+                lineStyle: {
+                    color: '#d1d5db'
+                }
+            },
+            axisLabel: {
+                color: '#1f2937'
+            }
+        },
+        yAxis: {
+            type: 'value',
+            name: 'Amount (USD)',
+            axisLine: {
+                lineStyle: {
+                    color: '#d1d5db'
+                }
+            },
+            axisLabel: {
+                color: '#1f2937',
+                formatter: '${value}K'
+            },
+            splitLine: {
+                lineStyle: {
+                    color: '#e5e7eb'
+                }
+            }
+        },
+        series: [
+            {
+                name: 'Revenue',
+                type: 'line',
+                data: [420, 532, 601, 684],
+                smooth: true,
+                symbol: 'none',
+                lineStyle: {
+                    width: 3,
+                    color: 'rgba(87, 181, 231, 1)'
+                },
+                areaStyle: {
+                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                        {
+                            offset: 0,
+                            color: 'rgba(87, 181, 231, 0.3)'
+                        },
+                        {
+                            offset: 1,
+                            color: 'rgba(87, 181, 231, 0.1)'
+                        }
+                    ])
+                }
+            },
+            {
+                name: 'Profit',
+                type: 'line',
+                data: [220, 282, 391, 434],
+                smooth: true,
+                symbol: 'none',
+                lineStyle: {
+                    width: 3,
+                    color: 'rgba(141, 211, 199, 1)'
+                },
+                areaStyle: {
+                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                        {
+                            offset: 0,
+                            color: 'rgba(141, 211, 199, 0.3)'
+                        },
+                        {
+                            offset: 1,
+                            color: 'rgba(141, 211, 199, 0.1)'
+                        }
+                    ])
+                }
+            }
+        ],
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '15%',
+            top: '15%',
+            containLabel: true
+        }
+    };
+    financialChart.setOption(financialOption);
+
+    // Resize charts when window size changes
+    window.addEventListener('resize', function() {
+        financialChart.resize();
+        customerChart.resize();
+    });
+});
+</script>
+</body>
+</html>

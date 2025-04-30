@@ -1,0 +1,64 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    text-align: center;
+    padding: 20px;
+}
+
+.container {
+    max-width: 400px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2, h3 {
+    color: #333;
+}
+
+select, input, button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #28a745;
+    color: white;
+    cursor: pointer;
+    border: none;
+    transition: opacity 0.3s ease; /* Add transition for fade effect */
+}
+
+button.fade-out {
+    opacity: 0.5; /* Fade out effect */
+    pointer-events: none; /* Prevent clicking */
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+.hidden {
+    display: none;
+}
+
+#loader {
+    display: none; /* Initially hidden */
+    border: 8px solid #f3f3f3; /* Light grey */
+    border-top: 8px solid #28a745; /* Green */
+    border-radius: 50%;
+    width: 40px; /* Size of the loader */
+    height: 40px; /* Size of the loader */
+    animation: spin 1s linear infinite; /* Spin animation */
+    margin: 10px auto; /* Center the loader */
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Service Selector</title>
+    <link rel="stylesheet" href="/styles/services.css">
+</head>
+<body>
+
+ 
+    <div class="container">
+        <h2>Select a Tech Field</h2>
+        <div id="message"></div>
+
+        <select id="techField" onchange="showServices()">
+            <option value="">-- Select a Field --</option>
+            <option value="website-development">Website Development</option>
+            <option value="graphic-design">Graphic Design</option>
+            <option value="data-analysis">Data Analysis</option>
+            <option value="marketing">Marketing</option>
+            <option value="product-management">Product Management</option>
+            <option value="web-advertisement">Web Advertisement</option>
+        </select>
+
+        <div id="serviceOptions" class="hidden">
+            <h3>Select a Service</h3>
+            <select id="serviceType" onchange="showContactForm()">
+                <option value="">-- Select a Service --</option>
+            </select>
+        </div>
+
+        <div id="contactForm" class="hidden">
+            <h3>Enter Your Contact Details</h3>
+            <form id="userForm">
+                <input type="text" id="fullName" placeholder="Full Name" required>
+                <input type="tel" id="phone" placeholder="Phone Number" required>
+                <input type="email" id="email" placeholder="Email Address" required>
+                <button type="submit">Submit</button>
+            </form>
+            <div id="loader" class="hidden"></div>
+        </div>
+
+    </div>
+    <script src="/scripts/services.js"></script>
+
+</body>
+</html>

@@ -3,34 +3,36 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Our Services - Paraclete Tech Outsourcing</title>
+<title>Paraclete - Our Services</title>
 <link rel="icon" href="img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
-<script src="https://cdn.tailwindcss.com"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
 <script>
-tailwind.config = {
-theme: {
-extend: {
-colors: {
-primary: '#0066FF',
-secondary: '#00A3FF'
+tailwind.config={
+theme:{
+extend:{
+colors:{
+primary:'#0066cc',
+secondary:'#00a0b0'
 },
-borderRadius: {
-'none': '0px',
-'sm': '4px',
-DEFAULT: '8px',
-'md': '12px',
-'lg': '16px',
-'xl': '20px',
-'2xl': '24px',
-'3xl': '32px',
-'full': '9999px',
-'button': '8px'
+borderRadius:{
+'none':'0px',
+'sm':'4px',
+DEFAULT:'8px',
+'md':'12px',
+'lg':'16px',
+'xl':'20px',
+'2xl':'24px',
+'3xl':'32px',
+'full':'9999px',
+'button':'8px'
+},
+fontFamily: {
+'sans': ['Inter', 'sans-serif'],
 }
 }
 }
@@ -38,420 +40,794 @@ DEFAULT: '8px',
 </script>
 <style>
 :where([class^="ri-"])::before { content: "\f3c2"; }
-body { font-family: 'Inter', sans-serif; }
-
-.timeline-estimator {
-  position: relative;
-  padding: 2rem;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+body {
+font-family: 'Inter', sans-serif;
 }
-
-.timeline-marker {
-  position: relative;
-  padding-left: 2rem;
-  border-left: 2px solid #0066FF;
-  margin-bottom: 1.5rem;
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+-webkit-appearance: none;
+margin: 0;
 }
-
-.timeline-marker::before {
-  content: '';
-  position: absolute;
-  left: -6px;
-  top: 0;
-  width: 10px;
-  height: 10px;
-  background: #0066FF;
-  border-radius: 50%;
+.hero-section {
+background-image: url('https://cdn.pixabay.com/photo/2018/01/17/04/14/industry-3087393_1280.jpg');
+background-size: cover;
+background-position: center;
 }
-
-.service-card {
-  transition: all 0.3s ease;
+.nav-link {
+position: relative;
 }
-
+.nav-link::after {
+content: '';
+position: absolute;
+width: 0;
+height: 2px;
+bottom: -2px;
+left: 0;
+background-color: #4169E1;
+transition: width 0.3s;
+}
+.nav-link:hover::after {
+width: 100%;
+}
+.mobile-menu {
+transform: translateX(100%);
+transition: transform 0.3s ease-in-out;
+}
+.mobile-menu.active {
+transform: translateX(0);
+}
 .service-card:hover {
-  transform: translateY(-5px);
+transform: translateY(-5px);
+box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
-
-.pricing-toggle {
-  position: relative;
-  width: 50px;
-  height: 26px;
-  border-radius: 13px;
-  background: #e5e7eb;
-  cursor: pointer;
+.process-step:not(:last-child)::after {
+content: '';
+position: absolute;
+top: 2.5rem;
+right: -3rem;
+width: 3rem;
+height: 2px;
+background-color: #e5e7eb;
 }
-
-.pricing-toggle::after {
-  content: '';
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  width: 22px;
-  height: 22px;
-  background: white;
-  border-radius: 50%;
-  transition: transform 0.3s;
+.custom-checkbox {
+appearance: none;
+-webkit-appearance: none;
+width: 1.25rem;
+height: 1.25rem;
+border: 2px solid #d1d5db;
+border-radius: 4px;
+background-color: white;
+cursor: pointer;
+position: relative;
 }
-
-.pricing-toggle.active::after {
-  transform: translateX(24px);
+.custom-checkbox:checked {
+background-color: #0066cc;
+border-color: #0066cc;
 }
-
-.pricing-toggle.active {
-  background: #0066FF;
+.custom-checkbox:checked::after {
+content: '';
+position: absolute;
+top: 0.25rem;
+left: 0.4rem;
+width: 0.3rem;
+height: 0.6rem;
+border: solid white;
+border-width: 0 2px 2px 0;
+transform: rotate(45deg);
 }
-
-.modal {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 1000;
+.custom-radio {
+appearance: none;
+-webkit-appearance: none;
+width: 1.25rem;
+height: 1.25rem;
+border: 2px solid #d1d5db;
+border-radius: 50%;
+background-color: white;
+cursor: pointer;
+position: relative;
 }
-
-.modal-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: white;
-  padding: 2rem;
-  border-radius: 12px;
-  max-width: 500px;
-  width: 90%;
+.custom-radio:checked {
+border-color: #0066cc;
+}
+.custom-radio:checked::after {
+content: '';
+position: absolute;
+top: 0.25rem;
+left: 0.25rem;
+width: 0.625rem;
+height: 0.625rem;
+border-radius: 50%;
+background-color: #0066cc;
+}
+.custom-range {
+-webkit-appearance: none;
+width: 100%;
+height: 6px;
+background: #e5e7eb;
+border-radius: 3px;
+outline: none;
+}
+.custom-range::-webkit-slider-thumb {
+-webkit-appearance: none;
+appearance: none;
+width: 18px;
+height: 18px;
+background: #0066cc;
+border-radius: 50%;
+cursor: pointer;
+}
+.custom-range::-moz-range-thumb {
+width: 18px;
+height: 18px;
+background: #0066cc;
+border-radius: 50%;
+cursor: pointer;
+border: none;
+}
+.custom-switch {
+position: relative;
+display: inline-block;
+width: 50px;
+height: 24px;
+}
+.custom-switch input {
+opacity: 0;
+width: 0;
+height: 0;
+}
+.switch-slider {
+position: absolute;
+cursor: pointer;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-color: #e5e7eb;
+transition: .4s;
+border-radius: 34px;
+}
+.switch-slider:before {
+position: absolute;
+content: "";
+height: 18px;
+width: 18px;
+left: 3px;
+bottom: 3px;
+background-color: white;
+transition: .4s;
+border-radius: 50%;
+}
+input:checked + .switch-slider {
+background-color: #0066cc;
+}
+input:checked + .switch-slider:before {
+transform: translateX(26px);
+}
+.tab-active {
+background-color: #0066cc;
+color: white;
 }
 </style>
 </head>
-<body class="bg-gray-50">
-<header class="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-lg z-50 border-b border-gray-100">
-<nav class="container mx-auto px-6 h-20 flex items-center justify-between">
-<a href="Paraclete.html" class="flex items-center">
+<body class="bg-gray-50 min-h-screen">
+<!-- Navigation -->
+<nav class="fixed top-0 left-0 right-0 bg-white shadow-sm z-50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-16">
+<div class="flex items-center">
+<a href="index.html" class="flex items-center">
 <img src="img/favicon.png" alt="Paraclete Logo" class="h-8 w-auto">
 </a>
+</div>
 <div class="hidden md:flex items-center space-x-8">
-<a href="Paraclete.html" data-readdy="true" class="text-gray-700 hover:text-primary transition-colors">Home</a>
-<a href="#" class="text-primary font-medium">Services</a>
-<a href="#" class="text-gray-700 hover:text-primary transition-colors">About</a>
-<a href="#" class="text-gray-700 hover:text-primary transition-colors">Contact</a>
-<button class="bg-primary text-white px-6 py-2 !rounded-button hover:bg-primary/90 transition-colors whitespace-nowrap">
-Get Started
+<a href="index.html" class="nav-link text-gray-700 hover:text-primary">Home</a>
+<a href="services.html" class="nav-link text-gray-700 hover:text-primary"><b>Services</b></a>
+<a href="Goals.html" class="nav-link text-gray-700 hover:text-primary">Goals</a>
+<a href="about-us.html" class="nav-link text-gray-700 hover:text-primary">About Us</a>
+<a href="fields.html" class="nav-link text-gray-700 hover:text-primary">Fields & Stacks</a>
+<a href="/src/Services.html"><button class="bg-primary text-white px-6 py-2 !rounded-button font-medium hover:bg-opacity-90 transition-colors whitespace-nowrap">Get Started</button></a>
+</div>
+<div class="md:hidden flex items-center">
+<button id="menuButton" class="text-gray-700 hover:text-primary">
+<i class="ri-menu-line ri-2x"></i>
 </button>
+</div>
+</div>
+</div>
+<!-- Mobile menu -->
+<div id="mobileMenu" class="mobile-menu fixed top-16 right-0 bottom-0 w-64 bg-white shadow-lg md:hidden">
+<div class="px-2 pt-2 pb-3 space-y-1">
+<a href="index.html" class="block px-3 py-2 text-gray-700 hover:bg-primary hover:text-white rounded-md">Home</a>
+<a href="services.html" class="block px-3 py-2 text-gray-700 hover:bg-primary hover:text-white rounded-md"><b>Services</b></a>
+<a href="Goals.html" class="block px-3 py-2 text-gray-700 hover:bg-primary hover:text-white rounded-md">Goals</a>
+<a href="about-us.html" class="block px-3 py-2 text-gray-700 hover:bg-primary hover:text-white rounded-md">About Us</a>
+<a href="fields.html" class="block px-3 py-2 text-gray-700 hover:bg-primary hover:text-white rounded-md">Fields & Stacks</a><br/>
+<a href="/src/Services.html"><button style="margin-left:45px" class="bg-primary text-white px-6 py-2 !rounded-button font-medium hover:bg-opacity-90 transition-colors whitespace-nowrap">Get Started</button></a>
+</div>
 </div>
 </nav>
-</header>
-
-<main class="pt-32">
-<section class="container mx-auto px-6 mb-20">
-<div class="flex items-center gap-2 text-sm text-gray-600 mb-6">
-<a href="Paraclete.html" data-readdy="true" class="hover:text-primary">Home</a>
-<i class="ri-arrow-right-s-line"></i>
-<span class="text-primary">Services</span>
-</div>
-
-<div class="text-center max-w-3xl mx-auto mb-20">
-<h1 class="text-4xl md:text-5xl font-bold mb-6">Our Comprehensive Services</h1>
-<p class="text-gray-600 text-lg">
-Discover our full range of technology solutions designed to transform your business and drive growth in the digital age.
-</p>
-</div>
-
-<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-<div class="service-card bg-white p-8 rounded-xl shadow-lg">
-<div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
-<i class="ri-code-line text-primary text-2xl"></i>
-</div>
-<h3 class="text-xl font-semibold mb-4">Web Development</h3>
-<ul class="text-gray-600 space-y-3 mb-6">
-<li class="flex items-center gap-2">
-<i class="ri-checkbox-circle-line text-primary"></i>
-Custom Web Applications
-</li>
-<li class="flex items-center gap-2">
-<i class="ri-checkbox-circle-line text-primary"></i>
-E-commerce Solutions
-</li>
-<li class="flex items-center gap-2">
-<i class="ri-checkbox-circle-line text-primary"></i>
-API Development
-</li>
-</ul>
-<button onclick="showServiceDetails('web')" class="text-primary hover:text-primary/80 font-medium flex items-center gap-2">
-View Details
-<i class="ri-arrow-right-line"></i>
-</button>
-</div>
-
-<div class="service-card bg-white p-8 rounded-xl shadow-lg">
-<div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
-<i class="ri-palette-line text-primary text-2xl"></i>
-</div>
-<h3 class="text-xl font-semibold mb-4">Graphics & Branding</h3>
-<ul class="text-gray-600 space-y-3 mb-6">
-<li class="flex items-center gap-2">
-<i class="ri-checkbox-circle-line text-primary"></i>
-Brand Identity Design
-</li>
-<li class="flex items-center gap-2">
-<i class="ri-checkbox-circle-line text-primary"></i>
-UI/UX Design
-</li>
-<li class="flex items-center gap-2">
-<i class="ri-checkbox-circle-line text-primary"></i>
-Marketing Materials
-</li>
-</ul>
-<button onclick="showServiceDetails('design')" class="text-primary hover:text-primary/80 font-medium flex items-center gap-2">
-View Details
-<i class="ri-arrow-right-line"></i>
-</button>
-</div>
-
-<div class="service-card bg-white p-8 rounded-xl shadow-lg">
-<div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
-<i class="ri-bar-chart-line text-primary text-2xl"></i>
-</div>
-<h3 class="text-xl font-semibold mb-4">Data Analytics</h3>
-<ul class="text-gray-600 space-y-3 mb-6">
-<li class="flex items-center gap-2">
-<i class="ri-checkbox-circle-line text-primary"></i>
-Business Intelligence
-</li>
-<li class="flex items-center gap-2">
-<i class="ri-checkbox-circle-line text-primary"></i>
-Predictive Analytics
-</li>
-<li class="flex items-center gap-2">
-<i class="ri-checkbox-circle-line text-primary"></i>
-Data Visualization
-</li>
-</ul>
-<button onclick="showServiceDetails('analytics')" class="text-primary hover:text-primary/80 font-medium flex items-center gap-2">
-View Details
-<i class="ri-arrow-right-line"></i>
-</button>
-</div>
-
-<div class="service-card bg-white p-8 rounded-xl shadow-lg">
-<div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
-<i class="ri-lightbulb-line text-primary text-2xl"></i>
-</div>
-<h3 class="text-xl font-semibold mb-4">Business Consulting</h3>
-<ul class="text-gray-600 space-y-3 mb-6">
-<li class="flex items-center gap-2">
-<i class="ri-checkbox-circle-line text-primary"></i>
-Digital Strategy
-</li>
-<li class="flex items-center gap-2">
-<i class="ri-checkbox-circle-line text-primary"></i>
-Process Optimization
-</li>
-<li class="flex items-center gap-2">
-<i class="ri-checkbox-circle-line text-primary"></i>
-Technology Advisory
-</li>
-</ul>
-<button onclick="showServiceDetails('consulting')" class="text-primary hover:text-primary/80 font-medium flex items-center gap-2">
-View Details
-<i class="ri-arrow-right-line"></i>
-</button>
-</div>
-</div>
-</section>
-
-<section class="bg-white py-20">
-<div class="container mx-auto px-6">
-<div class="text-center mb-12">
-<h2 class="text-3xl font-bold mb-4">Case Studies</h2>
-<p class="text-gray-600">See how we've helped businesses achieve their goals</p>
-</div>
-
-<div class="grid md:grid-cols-3 gap-8">
-<div class="bg-gray-50 rounded-xl overflow-hidden">
-<img src="https://public.readdy.ai/ai/img_res/55dd9d970a5f615fa03020cd813e78d2.jpg" alt="Case Study" class="w-full h-48 object-cover">
-<div class="p-6">
-<h3 class="text-xl font-semibold mb-2">E-commerce Platform</h3>
-<p class="text-gray-600 mb-4">Developed a scalable e-commerce solution for a retail chain</p>
-<div class="flex items-center justify-between">
-<span class="text-sm text-gray-500">Web Development</span>
-<button class="text-primary hover:text-primary/80">Read More</button>
-</div>
-</div>
-</div>
-
-<div class="bg-gray-50 rounded-xl overflow-hidden">
-<img src="https://public.readdy.ai/ai/img_res/c121d2c169fb268349c1dc974220df9b.jpg" alt="Case Study" class="w-full h-48 object-cover">
-<div class="p-6">
-<h3 class="text-xl font-semibold mb-2">Brand Transformation</h3>
-<p class="text-gray-600 mb-4">Complete rebranding for a tech startup</p>
-<div class="flex items-center justify-between">
-<span class="text-sm text-gray-500">Graphics & Branding</span>
-<button class="text-primary hover:text-primary/80">Read More</button>
-</div>
-</div>
-</div>
-
-<div class="bg-gray-50 rounded-xl overflow-hidden">
-<img src="https://public.readdy.ai/ai/img_res/ac64c21b5d49a9077826933a1368fd2d.jpg" alt="Case Study" class="w-full h-48 object-cover">
-<div class="p-6">
-<h3 class="text-xl font-semibold mb-2">Data-Driven Insights</h3>
-<p class="text-gray-600 mb-4">Analytics solution for a financial services firm</p>
-<div class="flex items-center justify-between">
-<span class="text-sm text-gray-500">Data Analytics</span>
-<button class="text-primary hover:text-primary/80">Read More</button>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-
-<section class="py-20">
-<div class="container mx-auto px-6">
-<div class="text-center mb-12">
-<h2 class="text-3xl font-bold mb-4">Ready to Start Your Project?</h2>
-<p class="text-gray-600 max-w-2xl mx-auto">
-Get in touch with our team to discuss your project requirements and receive a detailed proposal.
-</p>
-</div>
-<div class="max-w-4xl mx-auto">
-<form class="grid md:grid-cols-2 gap-6">
-<div>
-<label class="block text-sm font-medium text-gray-700 mb-2">Name</label>
-<input type="text" class="w-full border border-gray-200 rounded-lg px-4 py-2.5" placeholder="Your name">
-</div>
-<div>
-<label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
-<input type="email" class="w-full border border-gray-200 rounded-lg px-4 py-2.5" placeholder="your@email.com">
-</div>
-<div>
-<label class="block text-sm font-medium text-gray-700 mb-2">Phone</label>
-<input type="tel" class="w-full border border-gray-200 rounded-lg px-4 py-2.5" placeholder="Your phone number">
-</div>
-<div>
-<label class="block text-sm font-medium text-gray-700 mb-2">Service</label>
-<select class="w-full border border-gray-200 rounded-lg px-4 py-2.5">
-<option value="">-- Select a Field --</option>
-<option>Web Development</option>
-<option>Graphics & Branding</option>
-<option>Data Analytics</option>
-<option>Business Consulting</option>
-</select>
-</div>
-<div class="md:col-span-2">
-<label class="block text-sm font-medium text-gray-700 mb-2">Project Details</label>
-<textarea class="w-full border border-gray-200 rounded-lg px-4 py-2.5 h-32" placeholder="Tell us about your project"></textarea>
-</div>
-<div class="md:col-span-2 text-center">
-<button type="submit" id="submitBtn" class="bg-primary text-white px-8 py-3 !rounded-button hover:bg-primary/90 transition-colors">
-Submit Request
-</button>
-</div>
-</form>
-
-<!-- Success Modal -->
-<div id="successModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-  <div class="bg-white rounded-xl p-6 max-w-md w-full mx-4">
-    <div class="flex justify-between items-center mb-4">
-      <h3 class="text-xl font-semibold">Success!</h3>
-      <button class="text-gray-400 hover:text-gray-600" onclick="closeModal()">
-        <i class="ri-close-line text-2xl"></i>
-      </button>
-    </div>
-    <p class="text-gray-600 mb-6">Thank you for your request! Our team will contact you within 24 hours.</p>
-    <div class="text-center">
-      <button onclick="closeModal()" class="bg-primary text-white px-6 py-2 !rounded-button hover:bg-primary/90 transition-colors">
-        Close
-      </button>
-    </div>
-  </div>
-</div>
-</div>
-</div>
-</section>
-
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  const form = document.querySelector('form');
-  const submitBtn = document.getElementById('submitBtn');
-  const successModal = document.getElementById('successModal');
-  let modalTimeout;
-
-  function validateForm() {
-    const inputs = form.querySelectorAll('input, textarea, select');
-    let isValid = true;
-
-    // Remove existing error messages
-    form.querySelectorAll('.error-message').forEach(el => el.remove());
-    inputs.forEach(input => {
-      input.classList.remove('border-red-500');
-    });
-
-    inputs.forEach(input => {
-      if (!input.value.trim()) {
-        isValid = false;
-        input.classList.add('border-red-500');
-        
-        const errorMsg = document.createElement('p');
-        errorMsg.className = 'error-message text-red-500 text-sm mt-1';
-        errorMsg.textContent = 'This field is required';
-        input.parentNode.appendChild(errorMsg);
-      }
-
-      if (input.type === 'email' && input.value.trim()) {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(input.value.trim())) {
-          isValid = false;
-          input.classList.add('border-red-500');
-          
-          const errorMsg = document.createElement('p');
-          errorMsg.className = 'error-message text-red-500 text-sm mt-1';
-          errorMsg.textContent = 'Please enter a valid email address';
-          input.parentNode.appendChild(errorMsg);
-        }
-      }
-
-      if (input.type === 'tel' && input.value.trim()) {
-        const phoneRegex = /^\+?[\d\s-]{10,}$/;
-        if (!phoneRegex.test(input.value.trim())) {
-          isValid = false;
-          input.classList.add('border-red-500');
-          
-          const errorMsg = document.createElement('p');
-          errorMsg.className = 'error-message text-red-500 text-sm mt-1';
-          errorMsg.textContent = 'Please enter a valid phone number';
-          input.parentNode.appendChild(errorMsg);
-        }
-      }
-    });
-
-    return isValid;
-  }
-
-  function showModal() {
-    successModal.classList.remove('hidden');
-    modalTimeout = setTimeout(closeModal, 5000);
-  }
-
-  function closeModal() {
-    successModal.classList.add('hidden');
-    clearTimeout(modalTimeout);
-  }
-
-  window.closeModal = closeModal;
-
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    if (validateForm()) {
-      showModal();
-      form.reset();
-    }
-  });
+// Mobile Menu Toggle
+document.getElementById('menuButton').addEventListener('click', function() {
+document.getElementById('mobileMenu').classList.toggle('active');
+});
+</script>
+<!-- Hero Section -->
+<section class="hero-section pt-24 pb-20 relative">
+<div class="absolute inset-0 bg-gradient-to-r from-primary/90 to-transparent"></div>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+<div class="w-full md:w-1/2 py-16">
+<h1 class="text-4xl md:text-5xl font-bold text-white leading-tight">Our Comprehensive Services</h1>
+<p class="mt-6 text-xl text-white/90">Discover how our diverse team of tech professionals can transform your business with cutting-edge solutions tailored to your unique needs.</p>
+<div class="mt-10 flex flex-wrap gap-4">
+<a href="/src/Services.html"><button class="bg-white text-primary px-8 py-3 !rounded-button font-medium hover:bg-gray-100 transition shadow-lg whitespace-nowrap">Click to Get Started</button></a>
+</div>
+</div>
+</div>
+</section>
+<!-- Services Overview -->
+<section class="py-20 bg-white">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-16">
+<h2 class="text-3xl font-bold text-gray-900">Our Specialized Services</h2>
+<p class="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">We offer a comprehensive range of tech solutions to help businesses thrive in the digital landscape.</p>
+</div>
+<div class="flex justify-center mb-12">
+<div class="inline-flex p-1 bg-gray-100 rounded-full">
+<button class="tab-active px-6 py-2 rounded-full text-sm font-medium whitespace-nowrap">All Services</button>
+<button class="text-gray-700 px-6 py-2 rounded-full text-sm font-medium hover:bg-gray-200 whitespace-nowrap">Development</button>
+<button class="text-gray-700 px-6 py-2 rounded-full text-sm font-medium hover:bg-gray-200 whitespace-nowrap">Design</button>
+<button class="text-gray-700 px-6 py-2 rounded-full text-sm font-medium hover:bg-gray-200 whitespace-nowrap">Data & Analytics</button>
+<button class="text-gray-700 px-6 py-2 rounded-full text-sm font-medium hover:bg-gray-200 whitespace-nowrap">Security</button>
+</div>
+</div>
+<!-- Data Analytics Service -->
+<div class="mb-24">
+<div class="mb-12">
+<div class="max-w-3xl">
+<div class="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full mb-6">
+<i class="ri-database-2-line text-primary mr-2"></i>
+<span class="text-primary font-medium">Data Analytics</span>
+</div>
+<h3 class="text-3xl font-bold text-gray-900 mb-6">Transform Your Data into Strategic Insights</h3>
+<p class="text-lg text-gray-600 mb-6">Our data analytics services help organizations harness the power of their data to make informed decisions, identify trends, and gain competitive advantages in their markets.</p>
+<ul class="space-y-3 mb-8">
+<li class="flex items-start">
+<i class="ri-check-line text-primary mt-1 mr-3"></i>
+<span class="text-gray-700">Advanced data processing and cleansing</span>
+</li>
+<li class="flex items-start">
+<i class="ri-check-line text-primary mt-1 mr-3"></i>
+<span class="text-gray-700">Predictive analytics and forecasting models</span>
+</li>
+<li class="flex items-start">
+<i class="ri-check-line text-primary mt-1 mr-3"></i>
+<span class="text-gray-700">Custom dashboard development and visualization</span>
+</li>
+<li class="flex items-start">
+<i class="ri-check-line text-primary mt-1 mr-3"></i>
+<span class="text-gray-700">Business intelligence implementation</span>
+</li>
+<li class="flex items-start">
+<i class="ri-check-line text-primary mt-1 mr-3"></i>
+<span class="text-gray-700">Machine learning and AI-driven insights</span>
+</li>
+</ul>
+<a href="fields.html"><button class="bg-primary text-white px-6 py-3 !rounded-button font-medium hover:bg-primary/90 transition shadow whitespace-nowrap">Learn More</button></a>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+<div class="bg-white p-8 rounded-lg shadow-md border border-gray-100">
+<h4 class="text-xl font-semibold text-gray-900 mb-4">Technologies We Use</h4>
+<div class="flex flex-wrap gap-3">
+<span class="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700">Python</span>
+<span class="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700">R</span>
+<span class="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700">TensorFlow</span>
+<span class="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700">Tableau</span>
+<span class="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700">Power BI</span>
+<span class="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700">SQL</span>
+<span class="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700">Hadoop</span>
+<span class="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700">Spark</span>
+<span class="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700">AWS</span>
+<span class="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700">Azure</span>
+</div>
+</div>
+<div class="bg-white p-8 rounded-lg shadow-md border border-gray-100">
+<h4 class="text-xl font-semibold text-gray-900 mb-4">Benefits</h4>
+<ul class="space-y-3">
+<li class="flex items-start">
+<i class="ri-arrow-right-circle-line text-primary mt-1 mr-3"></i>
+<span class="text-gray-700">30-45% improvement in decision-making speed</span>
+</li>
+<li class="flex items-start">
+<i class="ri-arrow-right-circle-line text-primary mt-1 mr-3"></i>
+<span class="text-gray-700">Identify revenue opportunities worth 15-25% of current business</span>
+</li>
+<li class="flex items-start">
+<i class="ri-arrow-right-circle-line text-primary mt-1 mr-3"></i>
+<span class="text-gray-700">Reduce operational costs by up to 20%</span>
+</li>
+<li class="flex items-start">
+<i class="ri-arrow-right-circle-line text-primary mt-1 mr-3"></i>
+<span class="text-gray-700">Enhance customer experience with data-driven insights</span>
+</li>
+</ul>
+</div>
+<div class="bg-white p-8 rounded-lg shadow-md border border-gray-100">
+<h4 class="text-xl font-semibold text-gray-900 mb-4">Case Study Highlight</h4>
+<p class="text-gray-700 mb-4">We helped NexGen Retail increase their conversion rates by 32% within three months through advanced customer journey analytics.</p>
+<div class="flex items-center mt-6">
+<div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+<img src="https://readdy.ai/api/search-image?query=professional%2520business%2520portrait%2520of%2520female%2520CEO%252C%2520confident%252C%2520executive%2520attire%252C%2520neutral%2520background%252C%2520high%2520quality%2520headshot&width=100&height=100&seq=12350&orientation=squarish" alt="Client" class="w-full h-full object-cover">
+</div>
+<div>
+<h5 class="font-semibold text-gray-900">Rebecca Winters</h5>
+<p class="text-gray-600 text-sm">CMO, NexGen Retail</p>
+</div>
+</div>
+<a href="fields.html" class="text-primary font-medium flex items-center mt-4">
+Read Full Case Study
+<i class="ri-arrow-right-line ml-2"></i>
+</a>
+</div>
+</div>
+</div>
+<!-- Web Development Service -->
+<div class="mb-24">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-12">
+<div class="order-2 lg:order-1">
+<img src="https://readdy.ai/api/search-image?query=modern%2520responsive%2520website%2520design%2520on%2520multiple%2520devices%252C%2520clean%2520interface%252C%2520professional%2520web%2520development%2520showcase%252C%2520high%2520quality%2520detailed%2520image%2520with%2520soft%2520lighting%2520and%2520professional%2520appearance%252C%2520web%2520development%2520service%2520illustration&width=600&height=400&seq=23456&orientation=landscape" alt="Web Development" class="w-full h-auto rounded-xl shadow-lg">
+</div>
+<div class="order-1 lg:order-2">
+<div class="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full mb-6">
+<i class="ri-code-s-slash-line text-primary mr-2"></i>
+<span class="text-primary font-medium">Web Development</span>
+</div>
+<h3 class="text-3xl font-bold text-gray-900 mb-6">Create Powerful Web Experiences</h3>
+<p class="text-lg text-gray-600 mb-6">Our web development team builds scalable, high-performance websites and applications that deliver exceptional user experiences and drive business results.</p>
+<ul class="space-y-3 mb-8">
+<li class="flex items-start">
+<i class="ri-check-line text-primary mt-1 mr-3"></i>
+<span class="text-gray-700">Responsive website design and development</span>
+</li>
+<li class="flex items-start">
+<i class="ri-check-line text-primary mt-1 mr-3"></i>
+<span class="text-gray-700">Custom web application development</span>
+</li>
+<li class="flex items-start">
+<i class="ri-check-line text-primary mt-1 mr-3"></i>
+<span class="text-gray-700">E-commerce solutions and integrations</span>
+</li>
+<li class="flex items-start">
+<i class="ri-check-line text-primary mt-1 mr-3"></i>
+<span class="text-gray-700">CMS implementation and customization</span>
+</li>
+<li class="flex items-start">
+<i class="ri-check-line text-primary mt-1 mr-3"></i>
+<span class="text-gray-700">API development and third-party integrations</span>
+</li>
+</ul>
+<a href="fields.html"><button class="bg-primary text-white px-6 py-3 !rounded-button font-medium hover:bg-primary/90 transition shadow whitespace-nowrap">Learn More</button></a>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+<div class="bg-white p-8 rounded-lg shadow-md border border-gray-100">
+<h4 class="text-xl font-semibold text-gray-900 mb-4">Technologies We Use</h4>
+<div class="flex flex-wrap gap-3">
+<span class="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700">React</span>
+<span class="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700">Angular</span>
+<span class="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700">Vue.js</span>
+<span class="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700">Node.js</span>
+<span class="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700">PHP</span>
+<span class="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700">CSS</span>
+<span class="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700">Javascript</span>
+<span class="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700">Shopify</span>
+<span class="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700">MongoDB</span>
+<span class="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700">MySQL</span>
+</div>
+</div>
+<div class="bg-white p-8 rounded-lg shadow-md border border-gray-100">
+<h4 class="text-xl font-semibold text-gray-900 mb-4">Benefits</h4>
+<ul class="space-y-3">
+<li class="flex items-start">
+<i class="ri-arrow-right-circle-line text-primary mt-1 mr-3"></i>
+<span class="text-gray-700">40% faster page load times than industry average</span>
+</li>
+<li class="flex items-start">
+<i class="ri-arrow-right-circle-line text-primary mt-1 mr-3"></i>
+<span class="text-gray-700">SEO-optimized code structure for better rankings</span>
+</li>
+<li class="flex items-start">
+<i class="ri-arrow-right-circle-line text-primary mt-1 mr-3"></i>
+<span class="text-gray-700">Scalable architecture that grows with your business</span>
+</li>
+<li class="flex items-start">
+<i class="ri-arrow-right-circle-line text-primary mt-1 mr-3"></i>
+<span class="text-gray-700">Comprehensive security measures and compliance</span>
+</li>
+</ul>
+</div>
+<div class="bg-white p-8 rounded-lg shadow-md border border-gray-100">
+<h4 class="text-xl font-semibold text-gray-900 mb-4">Case Study Highlight</h4>
+<p class="text-gray-700 mb-4">We delivered Innovate Financial's new platform ahead of schedule and under budget, exceeding performance expectations.</p>
+<div class="flex items-center mt-6">
+<div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+<img src="https://readdy.ai/api/search-image?query=professional%2520business%2520portrait%2520of%2520male%2520CTO%252C%2520tech%2520leader%252C%2520casual%2520professional%2520attire%252C%2520neutral%2520background%252C%2520high%2520quality%2520headshot&width=100&height=100&seq=12351&orientation=squarish" alt="Client" class="w-full h-full object-cover">
+</div>
+<div>
+<h5 class="font-semibold text-gray-900">Michael Thornton</h5>
+<p class="text-gray-600 text-sm">CTO, Innovate Financial</p>
+</div>
+</div>
+<a href="fields.html" class="text-primary font-medium flex items-center mt-4">
+Read Full Case Study
+<i class="ri-arrow-right-line ml-2"></i>
+</a>
+</div>
+</div>
+</div>
+<!-- Graphic Design Service -->
+<div class="mb-24">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-12">
+<div>
+<div class="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full mb-6">
+<i class="ri-palette-line text-primary mr-2"></i>
+<span class="text-primary font-medium">Graphic Design</span>
+</div>
+<h3 class="text-3xl font-bold text-gray-900 mb-6">Elevate Your Brand with Stunning Visuals</h3>
+<p class="text-lg text-gray-600 mb-6">Our creative design team crafts visually compelling assets that strengthen your brand identity and communicate your message effectively across all platforms.</p>
+<ul class="space-y-3 mb-8">
+<li class="flex items-start">
+<i class="ri-check-line text-primary mt-1 mr-3"></i>
+<span class="text-gray-700">Brand identity development and guidelines</span>
+</li>
+<li class="flex items-start">
+<i class="ri-check-line text-primary mt-1 mr-3"></i>
+<span class="text-gray-700">UI/UX design for web and mobile applications</span>
+</li>
+<li class="flex items-start">
+<i class="ri-check-line text-primary mt-1 mr-3"></i>
+<span class="text-gray-700">Marketing and advertising materials</span>
+</li>
+<li class="flex items-start">
+<i class="ri-check-line text-primary mt-1 mr-3"></i>
+<span class="text-gray-700">Social media graphics and campaigns</span>
+</li>
+<li class="flex items-start">
+<i class="ri-check-line text-primary mt-1 mr-3"></i>
+<span class="text-gray-700">Print design and packaging</span>
+</li>
+</ul>
+<a href="fields.html"><button class="bg-primary text-white px-6 py-3 !rounded-button font-medium hover:bg-primary/90 transition shadow whitespace-nowrap">Learn More</button></a>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<img src="https://readdy.ai/api/search-image?query=professional%2520graphic%2520design%2520work%252C%2520brand%2520identity%2520materials%252C%2520logo%2520design%252C%2520color%2520palette%252C%2520typography%2520samples%252C%2520marketing%2520materials%252C%2520clean%2520composition%252C%2520creative%2520design%2520showcase&width=300&height=300&seq=34567&orientation=squarish" alt="Graphic Design" class="w-full h-auto rounded-xl shadow-lg">
+<img src="https://readdy.ai/api/search-image?query=UI%2520UX%2520design%2520mockup%2520on%2520devices%252C%2520mobile%2520app%2520interface%252C%2520user%2520experience%2520design%252C%2520wireframes%252C%2520professional%2520design%2520work%252C%2520clean%2520modern%2520aesthetic&width=300&height=300&seq=34568&orientation=squarish" alt="UI/UX Design" class="w-full h-auto rounded-xl shadow-lg">
+<img src="https://readdy.ai/api/search-image?query=social%2520media%2520graphics%2520design%252C%2520marketing%2520materials%252C%2520digital%2520advertising%2520assets%252C%2520professional%2520creative%2520work%252C%2520brand%2520consistent%2520design&width=300&height=300&seq=34569&orientation=squarish" alt="Social Media Design" class="w-full h-auto rounded-xl shadow-lg">
+<img src="https://readdy.ai/api/search-image?query=print%2520design%2520materials%252C%2520brochure%2520design%252C%2520business%2520cards%252C%2520packaging%2520design%252C%2520professional%2520print%2520materials%252C%2520high%2520quality%2520graphic%2520design%2520work&width=300&height=300&seq=34570&orientation=squarish" alt="Print Design" class="w-full h-auto rounded-xl shadow-lg">
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+<div class="bg-white p-8 rounded-lg shadow-md border border-gray-100">
+<h4 class="text-xl font-semibold text-gray-900 mb-4">Tools We Use</h4>
+<div class="flex flex-wrap gap-3">
+<span class="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700">Adobe Creative Suite</span>
+<span class="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700">Figma</span>
+<span class="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700">Sketch</span>
+<span class="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700">Corel</span>
+<span class="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700">Procreate</span>
+<span class="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700">Photoshop</span>
+<span class="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700">Canva Pro</span>
+</div>
+</div>
+<div class="bg-white p-8 rounded-lg shadow-md border border-gray-100">
+<h4 class="text-xl font-semibold text-gray-900 mb-4">Benefits</h4>
+<ul class="space-y-3">
+<li class="flex items-start">
+<i class="ri-arrow-right-circle-line text-primary mt-1 mr-3"></i>
+<span class="text-gray-700">Increase brand recognition by up to 80%</span>
+</li>
+<li class="flex items-start">
+<i class="ri-arrow-right-circle-line text-primary mt-1 mr-3"></i>
+<span class="text-gray-700">Boost engagement rates on digital platforms</span>
+</li>
+<li class="flex items-start">
+<i class="ri-arrow-right-circle-line text-primary mt-1 mr-3"></i>
+<span class="text-gray-700">Establish consistent visual communication</span>
+</li>
+<li class="flex items-start">
+<i class="ri-arrow-right-circle-line text-primary mt-1 mr-3"></i>
+<span class="text-gray-700">Differentiate from competitors with unique visuals</span>
+</li>
+</ul>
+</div>
+<div class="bg-white p-8 rounded-lg shadow-md border border-gray-100">
+<h4 class="text-xl font-semibold text-gray-900 mb-4">Case Study Highlight</h4>
+<p class="text-gray-700 mb-4">Our design team revitalized Fusion Media's brand identity, creating a visual language that resonated with their audience and strengthened their market position.</p>
+<div class="flex items-center mt-6">
+<div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+<img src="https://readdy.ai/api/search-image?query=professional%2520business%2520portrait%2520of%2520female%2520marketing%2520director%252C%2520creative%2520professional%252C%2520stylish%2520business%2520casual%252C%2520neutral%2520background%252C%2520high%2520quality%2520headshot&width=100&height=100&seq=12352&orientation=squarish" alt="Client" class="w-full h-full object-cover">
+</div>
+<div>
+<h5 class="font-semibold text-gray-900">Olivia Bennett</h5>
+<p class="text-gray-600 text-sm">Brand Director, Fusion Media</p>
+</div>
+</div>
+<a href="fields.html" class="text-primary font-medium flex items-center mt-4">
+Read Full Case Study
+<i class="ri-arrow-right-line ml-2"></i>
+</a>
+</div>
+</div>
+</div>
+<!-- Service Process Section -->
+<div class="mb-24">
+<div class="text-center mb-16">
+<h2 class="text-3xl font-bold text-gray-900">Our Service Delivery Process</h2>
+<p class="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">We follow a structured approach to ensure consistent, high-quality results for every project.</p>
+</div>
+<div class="flex flex-col md:flex-row justify-between items-center md:items-start max-w-5xl mx-auto">
+<div class="process-step relative text-center px-6 mb-12 md:mb-0">
+<div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+<i class="ri-discuss-line ri-2x text-primary"></i>
+</div>
+<h4 class="text-lg font-semibold text-gray-900 mb-2">1. Discovery</h4>
+<p class="text-gray-600">We learn about your business, goals, and requirements.</p>
+</div>
+<div class="process-step relative text-center px-6 mb-12 md:mb-0">
+<div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+<i class="ri-draft-line ri-2x text-primary"></i>
+</div>
+<h4 class="text-lg font-semibold text-gray-900 mb-2">2. Planning</h4>
+<p class="text-gray-600">We create a detailed roadmap and project plan.</p>
+</div>
+<div class="process-step relative text-center px-6 mb-12 md:mb-0">
+<div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+<i class="ri-code-box-line ri-2x text-primary"></i>
+</div>
+<h4 class="text-lg font-semibold text-gray-900 mb-2">3. Execution</h4>
+<p class="text-gray-600">We develop the solution with regular updates.</p>
+</div>
+<div class="process-step relative text-center px-6 mb-12 md:mb-0">
+<div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+<i class="ri-test-tube-line ri-2x text-primary"></i>
+</div>
+<h4 class="text-lg font-semibold text-gray-900 mb-2">4. Testing</h4>
+<p class="text-gray-600">We ensure quality through rigorous testing.</p>
+</div>
+<div class="process-step relative text-center px-6">
+<div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+<i class="ri-rocket-line ri-2x text-primary"></i>
+</div>
+<h4 class="text-lg font-semibold text-gray-900 mb-2">5. Launch</h4>
+<p class="text-gray-600">We deploy and provide ongoing support.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Case Studies Section -->
+<section class="py-20 bg-white">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-16">
+<h2 class="text-3xl font-bold text-gray-900">Featured Case Studies</h2>
+<p class="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">See how we've helped organizations achieve remarkable results with our services.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Case Study 1 -->
+<div class="bg-white rounded-xl shadow-md overflow-hidden">
+<div class="h-56 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=data%2520analytics%2520dashboard%2520visualization%252C%2520business%2520intelligence%2520interface%252C%2520professional%2520data%2520charts%2520and%2520graphs%252C%2520clean%2520modern%2520design%252C%2520corporate%2520analytics%2520platform&width=600&height=400&seq=45678&orientation=landscape" alt="Data Analytics Case Study" class="w-full h-full object-cover">
+</div>
+<div class="p-6">
+<div class="inline-flex items-center px-3 py-1 bg-primary/10 rounded-full mb-4">
+<span class="text-primary text-sm font-medium">Data Analytics</span>
+</div>
+<h3 class="text-xl font-bold text-gray-900 mb-2">NexGen Retail Customer Journey Optimization</h3>
+<p class="text-gray-600 mb-4">Increased conversion rates by 32% through advanced customer journey analytics and personalization strategies.</p>
+<div class="flex items-center justify-between">
+<div class="flex items-center">
+<div class="w-10 h-10 rounded-full overflow-hidden mr-3">
+<img src="https://readdy.ai/api/search-image?query=professional%2520business%2520portrait%2520of%2520female%2520CEO%252C%2520confident%252C%2520executive%2520attire%252C%2520neutral%2520background%252C%2520high%2520quality%2520headshot&width=100&height=100&seq=12350&orientation=squarish" alt="Client" class="w-full h-full object-cover">
+</div>
+<span class="text-sm text-gray-700">Rebecca Winters, CMO</span>
+</div>
+<a href="#" class="text-primary font-medium text-sm">Read More</a>
+</div>
+</div>
+</div>
+<!-- Case Study 2 -->
+<div class="bg-white rounded-xl shadow-md overflow-hidden">
+<div class="h-56 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=financial%2520technology%2520web%2520platform%252C%2520banking%2520application%2520interface%252C%2520fintech%2520website%2520design%252C%2520professional%2520financial%2520services%2520digital%2520platform%252C%2520clean%2520modern%2520interface&width=600&height=400&seq=45679&orientation=landscape" alt="Web Development Case Study" class="w-full h-full object-cover">
+</div>
+<div class="p-6">
+<div class="inline-flex items-center px-3 py-1 bg-primary/10 rounded-full mb-4">
+<span class="text-primary text-sm font-medium">Web Development</span>
+</div>
+<h3 class="text-xl font-bold text-gray-900 mb-2">Innovate Financial Platform Redesign</h3>
+<p class="text-gray-600 mb-4">Delivered a high-performance financial platform that reduced load times by 65% and increased user engagement by 47%.</p>
+<div class="flex items-center justify-between">
+<div class="flex items-center">
+<div class="w-10 h-10 rounded-full overflow-hidden mr-3">
+<img src="https://readdy.ai/api/search-image?query=professional%2520business%2520portrait%2520of%2520male%2520CTO%252C%2520tech%2520leader%252C%2520casual%2520professional%2520attire%252C%2520neutral%2520background%252C%2520high%2520quality%2520headshot&width=100&height=100&seq=12351&orientation=squarish" alt="Client" class="w-full h-full object-cover">
+</div>
+<span class="text-sm text-gray-700">Michael Thornton, CTO</span>
+</div>
+<a href="#" class="text-primary font-medium text-sm">Read More</a>
+</div>
+</div>
+</div>
+<!-- Case Study 3 -->
+<div class="bg-white rounded-xl shadow-md overflow-hidden">
+<div class="h-56 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=brand%2520identity%2520design%2520showcase%252C%2520marketing%2520materials%252C%2520logo%2520design%252C%2520brand%2520guidelines%252C%2520creative%2520agency%2520work%252C%2520professional%2520graphic%2520design%2520portfolio&width=600&height=400&seq=45680&orientation=landscape" alt="Graphic Design Case Study" class="w-full h-full object-cover">
+</div>
+<div class="p-6">
+<div class="inline-flex items-center px-3 py-1 bg-primary/10 rounded-full mb-4">
+<span class="text-primary text-sm font-medium">Graphic Design</span>
+</div>
+<h3 class="text-xl font-bold text-gray-900 mb-2">Fusion Media Brand Revitalization</h3>
+<p class="text-gray-600 mb-4">Created a cohesive brand identity that increased brand recognition by 78% and strengthened market positioning.</p>
+<div class="flex items-center justify-between">
+<div class="flex items-center">
+<div class="w-10 h-10 rounded-full overflow-hidden mr-3">
+<img src="https://readdy.ai/api/search-image?query=professional%2520business%2520portrait%2520of%2520female%2520marketing%2520director%252C%2520creative%2520professional%252C%2520stylish%2520business%2520casual%252C%2520neutral%2520background%252C%2520high%2520quality%2520headshot&width=100&height=100&seq=12352&orientation=squarish" alt="Client" class="w-full h-full object-cover">
+</div>
+<span class="text-sm text-gray-700">Olivia Bennett, Brand Director</span>
+</div>
+<a href="#" class="text-primary font-medium text-sm">Read More</a>
+</div>
+</div>
+</div>
+</div>
+<div class="text-center mt-12">
+<a href="fields.html"><button class="bg-primary text-white px-8 py-3 !rounded-button font-medium hover:bg-primary/90 transition shadow whitespace-nowrap">View All Case Studies</button></a>
+</div>
+</div>
+</section>
+<!-- FAQ Section -->
+<section class="py-20 bg-white">
+<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-16">
+<h2 class="text-3xl font-bold text-gray-900">Frequently Asked Questions</h2>
+<p class="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">Find answers to common questions about our services and process.</p>
+</div>
+<div class="space-y-6">
+<div class="bg-gray-50 rounded-lg p-6">
+<button class="flex justify-between items-center w-full text-left">
+<h3 class="text-lg font-semibold text-gray-900">How do you ensure the quality of your services?</h3>
+<i class="ri-arrow-down-s-line text-primary"></i>
+</button>
+<div class="mt-4">
+<p class="text-gray-600">We maintain rigorous quality standards through a combination of expert staff, structured processes, regular reviews, and client feedback. Our team follows industry best practices and undergoes continuous training to stay current with the latest technologies and methodologies. Additionally, we implement comprehensive testing protocols for all deliverables before client handover.</p>
+</div>
+</div>
+<div class="bg-gray-50 rounded-lg p-6">
+<button class="flex justify-between items-center w-full text-left">
+<h3 class="text-lg font-semibold text-gray-900">What is your typical project timeline?</h3>
+<i class="ri-arrow-down-s-line text-primary"></i>
+</button>
+<div class="mt-4">
+<p class="text-gray-600">Project timelines vary based on scope, complexity, and requirements. Simple projects may take 4-6 weeks, while more complex initiatives can span 3-6 months or longer. During our initial consultation, we'll provide a detailed timeline estimate based on your specific needs. We pride ourselves on transparent communication about project progress and milestone achievements throughout the engagement.</p>
+</div>
+</div>
+<div class="bg-gray-50 rounded-lg p-6">
+<button class="flex justify-between items-center w-full text-left">
+<h3 class="text-lg font-semibold text-gray-900">Do you offer ongoing support after project completion?</h3>
+<i class="ri-arrow-down-s-line text-primary"></i>
+</button>
+<div class="mt-4">
+<p class="text-gray-600">Yes, we offer various support options after project completion. Each service package includes a specified support period (30 days for Basic, 90 days for Professional, and 12 months for Enterprise). Beyond these periods, we offer flexible maintenance and support plans tailored to your needs. Our support includes bug fixes, minor updates, performance monitoring, and technical assistance.</p>
+</div>
+</div>
+<div class="bg-gray-50 rounded-lg p-6">
+<button class="flex justify-between items-center w-full text-left">
+<h3 class="text-lg font-semibold text-gray-900">Can you work with our existing systems and technologies?</h3>
+<i class="ri-arrow-down-s-line text-primary"></i>
+</button>
+<div class="mt-4">
+<p class="text-gray-600">Absolutely. Our team is experienced in integrating with a wide range of existing systems and technologies. We begin each project with a thorough assessment of your current infrastructure to ensure seamless integration. Whether you're using legacy systems or modern platforms, we develop solutions that work harmoniously with your existing technology stack while providing opportunities for enhancement and optimization.</p>
+</div>
+</div>
+<div class="bg-gray-50 rounded-lg p-6">
+<button class="flex justify-between items-center w-full text-left">
+<h3 class="text-lg font-semibold text-gray-900">How do you handle project changes and revisions?</h3>
+<i class="ri-arrow-down-s-line text-primary"></i>
+</button>
+<div class="mt-4">
+<p class="text-gray-600">We understand that requirements can evolve during a project. Our process includes a structured change management approach that balances flexibility with project stability. Each service tier includes a specific number of revision rounds. For changes beyond the scope, we implement a transparent change request process that outlines potential impacts on timeline, budget, and deliverables, ensuring you maintain full control over project direction.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-20 bg-primary">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center">
+<h2 class="text-3xl font-bold text-white">Ready to Transform Your Tech Vision into Reality?</h2>
+<p class="mt-4 text-xl text-white/90 max-w-3xl mx-auto">Join the hundreds of organizations that have accelerated their growth with our collective expertise.</p>
+<div class="mt-10">
+<a href="src/Services.html"><button class="bg-white text-primary px-8 py-3 !rounded-button font-medium hover:bg-gray-100 transition shadow-lg whitespace-nowrap">Get Started Today</button></a>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-gray-900 text-white py-12">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
+<div>
+<div class="flex items-center mb-4">
+<img src="img/favicon.png" alt="Paraclete Logo" class="h-8 w-auto">
+</div>
+<p class="text-gray-400 mt-2">Empowering innovation through collective expertise since 2022.</p>
+<div class="flex space-x-4 mt-6">
+<a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-primary transition">
+<i class="ri-linkedin-fill"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-primary transition">
+<i class="ri-twitter-fill"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-primary transition">
+<i class="ri-facebook-fill"></i>
+</a>
+<a href="https://www.instagram.com/paraclete_outsourcing?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-primary transition">
+<i class="ri-instagram-fill"></i>
+</a>
+</div>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+<ul class="space-y-2">
+<li><a href="index.html" data-readdy="true" class="text-gray-400 hover:text-white transition">Home</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition"><span style="color:white">Services</span></a></li>
+<li><a href="about-us.html" class="text-gray-400 hover:text-white transition">About Us</a></li>
+<li><a href="goals.html" class="text-gray-400 hover:text-white transition">Our Goals</a></li>
+<li><a href="fields.html" class="text-gray-400 hover:text-white transition">Fields & Stacks</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-4">Services</h3>
+<ul class="space-y-2">
+<li><a href="/src/Services.html" class="text-gray-400 hover:text-white transition">Data Analytics</a></li>
+<li><a href="/src/Services.html" class="text-gray-400 hover:text-white transition">Web Development</a></li>
+<li><a href="/src/Services.html" class="text-gray-400 hover:text-white transition">Graphic Design</a></li>
+<li><a href="/src/Services.html" class="text-gray-400 hover:text-white transition">Mobile App Development</a></li>
+<li><a href="/src/Services.html" class="text-gray-400 hover:text-white transition">Web Advertisement</a></li>
+<li><a href="/src/Services.html" class="text-gray-400 hover:text-white transition">Marketing</a></li>
+<li><a href="/src/Services.html" class="text-gray-400 hover:text-white transition">Product Management</a></li>
+</ul>
+</div>
+</div>
+<div class="pt-8 mt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
+<p class="text-gray-400">© 2025 Paraclete. All rights reserved.</p>
+<div class="mt-4 md:mt-0 flex space-x-6">
+<a href="#" class="text-gray-400 hover:text-white transition">Privacy Policy</a>
+<a href="#" class="text-gray-400 hover:text-white transition">Terms of Service</a>
+<a href="#" class="text-gray-400 hover:text-white transition">Cookie Policy</a>
+</div>
+</div>
+</div>
+</footer>
+<script>
+// FAQ accordion
+const faqButtons = document.querySelectorAll('.bg-gray-50 button');
+faqButtons.forEach(button => {
+button.addEventListener('click', function() {
+const content = this.nextElementSibling;
+const icon = this.querySelector('i');
+if (content.style.maxHeight) {
+content.style.maxHeight = null;
+icon.classList.remove('ri-arrow-up-s-line');
+icon.classList.add('ri-arrow-down-s-line');
+} else {
+content.style.maxHeight = content.scrollHeight + 'px';
+icon.classList.remove('ri-arrow-down-s-line');
+icon.classList.add('ri-arrow-up-s-line');
+}
+});
 });
 </script>
 </body>
